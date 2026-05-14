@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AuditWeb — Auditoría de Seguridad Web Profesional</title>
+  <meta name="description" content="Ecosistema modular de auditoría web y detección de amenazas. Metodología técnica, reportes firmados digitalmente, confidencialidad garantizada.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="AuditWeb — Auditoría de Seguridad Web">
+  <meta property="og:description" content="Identificamos vulnerabilidades antes que los atacantes.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #0f1628;
+      --bg2:    #1a1f35;
+      --bg3:    #0a1020;
+      --accent: #64ffda;
+      --accent2:#00b4d8;
+      --grad:   linear-gradient(90deg, #64ffda, #00b4d8);
+      --text:   #ccd6f6;
+      --muted:  #8892b0;
+      --border: #ffffff12;
+      --high:   #ff7b72;
+      --med:    #e3b341;
+      --low:    #3fb950;
+      --radius: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 64px;
+      background: transparent;
+      transition: background 0.3s, backdrop-filter 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(10,16,32,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-size: 1.1rem; font-weight: 800; letter-spacing: 1px; color: var(--accent); }
+    .nav-logo span { color: var(--text); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .btn-nav { background: var(--accent); color: var(--bg3); padding: 0.45rem 1.1rem; border-radius: var(--radius); font-size: 0.82rem; font-weight: 700; transition: opacity 0.2s; }
+    .btn-nav:hover { opacity: 0.85; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 100px 5% 60px;
+      background: radial-gradient(ellipse at 50% 0%, #1a2a4a 0%, var(--bg) 65%);
+      position: relative; overflow: hidden;
+    }
+    .hero-inner { position: relative; max-width: 720px; }
+    .eyebrow { display: inline-block; color: var(--accent); font-size: 0.72rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1.2rem; }
+    h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.2rem; }
+    h1 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { color: var(--muted); font-size: 1.05rem; max-width: 520px; margin: 0 auto 2.2rem; }
+    .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: var(--grad); color: var(--bg3); padding: 0.75rem 1.6rem; border-radius: var(--radius); font-size: 0.9rem; font-weight: 800; transition: opacity 0.2s, transform 0.2s; display: inline-flex; align-items: center; gap: 0.4rem; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-secondary { border: 1px solid rgba(100,255,218,0.35); color: var(--accent); padding: 0.75rem 1.6rem; border-radius: var(--radius); font-size: 0.9rem; font-weight: 600; transition: background 0.2s, transform 0.2s; }
+    .btn-secondary:hover { background: rgba(100,255,218,0.07); transform: translateY(-1px); }
+
+    /* ── SECCIONES ── */
+    section { padding: 80px 5%; max-width: 1100px; margin: 0 auto; }
+    .section-label { text-align: center; font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
+    .section-title { text-align: center; font-size: clamp(1.4rem,3vw,2rem); font-weight: 800; color: var(--text); margin-bottom: 0.8rem; }
+    .section-sub { text-align: center; color: var(--muted); font-size: 0.95rem; max-width: 500px; margin: 0 auto 3rem; }
+    .divider { border: none; border-top: 1px solid var(--border); max-width: 1100px; margin: 0 auto; }
+
+    /* ── FEATURES ── */
+    .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; }
+    .feature-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(100,255,218,0.12); border-radius: var(--radius); padding: 1.8rem; transition: border-color 0.2s, transform 0.2s; }
+    .feature-card:hover { border-color: rgba(100,255,218,0.35); transform: translateY(-3px); }
+    .feature-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+    .feature-card h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+    .feature-card p { color: var(--muted); font-size: 0.88rem; }
+
+    /* ── DEMO ── */
+    #demo { padding: 80px 5%; background: var(--bg2); }
+    #demo > div { max-width: 1100px; margin: 0 auto; }
+    .demo-panel { background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 1.6rem; max-width: 680px; margin: 0 auto; font-size: 0.88rem; }
+    .demo-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; }
+    .demo-title { color: var(--accent); font-weight: 700; font-size: 0.9rem; }
+    .badge-live { background: rgba(100,255,218,0.12); color: var(--accent); border: 1px solid rgba(100,255,218,0.3); padding: 2px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; }
+    .progress-wrap { background: rgba(255,255,255,0.06); border-radius: 4px; height: 6px; margin-bottom: 0.5rem; overflow: hidden; }
+    .progress-bar { height: 100%; width: 0%; background: var(--grad); border-radius: 4px; transition: width 0.1s linear; }
+    .demo-module { color: var(--muted); font-size: 0.78rem; margin-bottom: 1.2rem; }
+    .demo-module span { color: var(--accent); font-weight: 600; }
+    .counters { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.8rem; margin-bottom: 1.2rem; }
+    .counter-box { border-radius: var(--radius); padding: 0.8rem; text-align: center; }
+    .counter-box.high { background: rgba(255,123,114,0.10); border: 1px solid rgba(255,123,114,0.25); }
+    .counter-box.med  { background: rgba(227,179,65,0.10);  border: 1px solid rgba(227,179,65,0.25); }
+    .counter-box.low  { background: rgba(63,185,80,0.10);   border: 1px solid rgba(63,185,80,0.25); }
+    .counter-num { font-size: 1.8rem; font-weight: 800; display: block; }
+    .counter-box.high .counter-num { color: var(--high); }
+    .counter-box.med  .counter-num { color: var(--med); }
+    .counter-box.low  .counter-num { color: var(--low); }
+    .counter-label { font-size: 0.7rem; color: var(--muted); font-weight: 600; letter-spacing: 1px; }
+    .findings-list { background: rgba(255,255,255,0.03); border-radius: var(--radius); padding: 0.8rem; min-height: 100px; margin-bottom: 1rem; }
+    .finding-item { font-size: 0.82rem; padding: 4px 0; opacity: 0; transform: translateX(-8px); transition: opacity 0.4s, transform 0.4s; color: var(--muted); }
+    .finding-item.visible { opacity: 1; transform: translateX(0); }
+    .demo-footer { color: var(--low); font-size: 0.78rem; opacity: 0; transition: opacity 0.5s; margin-bottom: 1rem; }
+    .demo-footer.visible { opacity: 1; }
+    .btn-restart { background: none; border: 1px solid var(--border); color: var(--muted); padding: 0.4rem 1rem; border-radius: var(--radius); font-size: 0.78rem; cursor: pointer; font-family: inherit; transition: border-color 0.2s, color 0.2s; display: block; margin: 0 auto; }
+    .btn-restart:hover { border-color: var(--accent); color: var(--accent); }
+    .demo-disclaimer { text-align: center; color: var(--muted); font-size: 0.72rem; margin-top: 1rem; opacity: 0.6; }
+
+    /* ── TECH STACK ── */
+    .stack-row { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin-top: 1rem; }
+    .stack-badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 1rem; border-radius: 20px; font-size: 0.82rem; font-weight: 600; border: 1px solid; }
+
+    /* ── SERVICIOS ── */
+    .services-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
+    .service-card { background: rgba(255,255,255,0.03); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 1.2rem 1.4rem; transition: background 0.2s; }
+    .service-card:hover { background: rgba(100,255,218,0.04); }
+    .service-card h3 { color: var(--text); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .service-card p { color: var(--muted); font-size: 0.85rem; }
+
+    /* ── METODOLOGÍA ── */
+    .timeline { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; position: relative; margin-top: 1rem; }
+    .timeline::before { content: ''; position: absolute; top: 28px; left: 12.5%; right: 12.5%; height: 2px; background: linear-gradient(90deg,var(--accent),var(--accent2)); opacity: 0.3; }
+    .timeline-step { text-align: center; position: relative; }
+    .step-num { width: 56px; height: 56px; background: var(--bg2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin: 0 auto 1rem; position: relative; z-index: 1; }
+    .timeline-step h3 { font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
+    .timeline-step p { color: var(--muted); font-size: 0.82rem; }
+
+    /* ── PRECIOS ── */
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; align-items: start; }
+    .price-card { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; transition: border-color 0.2s, transform 0.2s; }
+    .price-card:hover { border-color: rgba(100,255,218,0.3); transform: translateY(-3px); }
+    .price-card.featured { border-color: rgba(100,255,218,0.4); background: rgba(100,255,218,0.04); position: relative; }
+    .featured-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--grad); color: var(--bg3); font-size: 0.68rem; font-weight: 800; padding: 3px 12px; border-radius: 20px; white-space: nowrap; }
+    .price-plan { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    .price-amount { font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 0.2rem; }
+    .price-note { color: var(--muted); font-size: 0.78rem; margin-bottom: 1.2rem; }
+    .price-features { list-style: none; margin-bottom: 1.5rem; }
+    .price-features li { color: var(--muted); font-size: 0.85rem; padding: 0.3rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 0.5rem; }
+    .price-features li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+    .btn-price { display: block; text-align: center; padding: 0.65rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(100,255,218,0.3); color: var(--accent); transition: background 0.2s; }
+    .btn-price:hover { background: rgba(100,255,218,0.08); }
+    .price-card.featured .btn-price { background: var(--grad); color: var(--bg3); border: none; }
+    .price-card.featured .btn-price:hover { opacity: 0.88; }
+
+    /* ── SOBRE MÍ ── */
+    .about-wrap { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: center; }
+    .about-avatar { width: 160px; height: 160px; border-radius: 50%; background: var(--bg2); border: 3px solid rgba(100,255,218,0.3); display: flex; align-items: center; justify-content: center; font-size: 3rem; margin: 0 auto; }
+    .about-text h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.3rem; }
+    .about-role { color: var(--accent); font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+    .about-text p { color: var(--muted); font-size: 0.92rem; margin-bottom: 1rem; }
+    .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag { background: rgba(100,255,218,0.08); border: 1px solid rgba(100,255,218,0.2); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.78rem; font-weight: 600; }
+
+    /* ── CONTACTO ── */
+    #contacto { background: var(--bg2); padding: 80px 5%; }
+    #contacto > div { max-width: 1100px; margin: 0 auto; text-align: center; }
+    .contact-box { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem; max-width: 520px; margin: 0 auto; }
+    .contact-email { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(100,255,218,0.06); border: 1px solid rgba(100,255,218,0.2); color: var(--accent); padding: 0.75rem 1.4rem; border-radius: var(--radius); font-size: 0.95rem; font-weight: 600; margin: 1.2rem 0; transition: background 0.2s; }
+    .contact-email:hover { background: rgba(100,255,218,0.12); }
+    .contact-sub { color: var(--muted); font-size: 0.88rem; margin-bottom: 1.5rem; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 0.78rem; }
+    footer a { color: var(--accent); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--bg3); padding: 1.5rem; gap: 1.2rem; border-bottom: 1px solid var(--border); }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .features-grid, .pricing-grid, .services-grid { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: repeat(2,1fr); }
+      .timeline::before { display: none; }
+      .about-wrap { grid-template-columns: 1fr; text-align: center; }
+      .about-tags { justify-content: center; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">⬡ AUDIT<span>WEB</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#metodologia">Metodología</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#contacto" class="btn-nav">Contactar</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" aria-label="Menú" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Auditoría Web Profesional</span>
+    <h1>Ecosistema modular de <em>auditoría web</em> y detección de amenazas</h1>
+    <p class="hero-sub">
+      Identificamos vulnerabilidades antes que los atacantes. Metodología técnica, reportes firmados digitalmente y confidencialidad garantizada en cada auditoría.
+    </p>
+    <div class="cta-group">
+      <a href="https://github.com/DaniAngel79/-audit-web-toolkit" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        ⭐ View on GitHub
+      </a>
+      <a href="#contacto" class="btn-secondary">Contact for Audit →</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FEATURES -->
+<section id="features">
+  <p class="section-label">Capacidades del toolkit</p>
+  <h2 class="section-title">Todo lo que necesitás para una auditoría completa</h2>
+  <p class="section-sub">Herramientas profesionales integradas en un ecosistema modular y automatizado.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Escaneo dinámico con Nuclei/Nikto</h3>
+      <p>Templates selectivos contra CVEs reales. Detección de misconfiguraciones, headers faltantes y vulnerabilidades conocidas.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📄</div>
+      <h3>Reportes automáticos en PDF</h3>
+      <p>Entregables firmados digitalmente con RSA-SHA256. Hallazgos clasificados por severidad, listos para presentar al cliente.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🤖</div>
+      <h3>Integración con IA local (Ollama)</h3>
+      <p>Análisis asistido por IA que corre completamente en local. Sin enviar datos sensibles del cliente a la nube.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- DEMO ANIMADA -->
+<div id="demo">
+  <div>
+    <p class="section-label">Demo interactiva</p>
+    <h2 class="section-title">Así trabaja el toolkit</h2>
+    <p class="section-sub">Simulación de un escaneo real. Los datos mostrados son ficticios.</p>
+
+    <div class="demo-panel" id="demoPanel">
+      <div class="demo-header">
+        <span class="demo-title">⚡ Escaneo en progreso — demo-target.com</span>
+        <span class="badge-live" id="badgeLive">EN VIVO</span>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <p class="demo-module">Módulo activo: <span id="moduleLabel">iniciando...</span></p>
+      <div class="counters">
+        <div class="counter-box high">
+          <span class="counter-num" id="cntHigh">0</span>
+          <span class="counter-label">ALTO</span>
+        </div>
+        <div class="counter-box med">
+          <span class="counter-num" id="cntMed">0</span>
+          <span class="counter-label">MEDIO</span>
+        </div>
+        <div class="counter-box low">
+          <span class="counter-num" id="cntLow">0</span>
+          <span class="counter-label">BAJO</span>
+        </div>
+      </div>
+      <div class="findings-list" id="findingsList" aria-live="polite"></div>
+      <p class="demo-footer" id="demoFooter">
+        ✓ Reporte generado: reporte_demo_2026.pdf · Firmado RSA-SHA256: a3f8c1d…
+      </p>
+      <button class="btn-restart" id="btnRestart" type="button">↺ Reiniciar demo</button>
+      <p class="demo-disclaimer">* Datos ficticios únicamente con fines ilustrativos</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- TECH STACK -->
+<section id="stack">
+  <p class="section-label">Tech Stack</p>
+  <h2 class="section-title">Construido con herramientas de seguridad reales</h2>
+  <div class="stack-row">
+    <span class="stack-badge" style="background:rgba(55,118,171,0.12);border-color:rgba(55,118,171,0.4);color:#79c0ff;">🐍 Python</span>
+    <span class="stack-badge" style="background:rgba(23,147,209,0.12);border-color:rgba(23,147,209,0.4);color:#1793d1;">🐉 Kali Linux</span>
+    <span class="stack-badge" style="background:rgba(136,23,23,0.12);border-color:rgba(255,107,107,0.4);color:#ff6b6b;">🔒 WireGuard</span>
+    <span class="stack-badge" style="background:rgba(36,150,237,0.12);border-color:rgba(36,150,237,0.4);color:#2496ed;">🐳 Docker</span>
+    <span class="stack-badge" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.2);color:#ccd6f6;">🦙 Ollama</span>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <p class="section-label">Servicios</p>
+  <h2 class="section-title">¿Qué tipo de auditoría necesitás?</h2>
+  <p class="section-sub">Cada servicio genera un reporte ejecutivo firmado digitalmente como entregable final.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <h3>Auditoría Black Box</h3>
+      <p>Reconocimiento pasivo + escaneo externo sin credenciales. Perspectiva del atacante real.</p>
+    </div>
+    <div class="service-card">
+      <h3>Auditoría Gray Box</h3>
+      <p>Con credenciales de acceso parcial. Mayor cobertura y profundidad de análisis.</p>
+    </div>
+    <div class="service-card">
+      <h3>Análisis de Código (SAST)</h3>
+      <p>Semgrep y Trufflehog sobre código fuente. Detección de secretos y vulnerabilidades estáticas.</p>
+    </div>
+    <div class="service-card">
+      <h3>Reporte Ejecutivo</h3>
+      <p>PDF firmado con RSA-SHA256. Hallazgos clasificados por severidad con recomendaciones de remediación.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- METODOLOGÍA -->
+<section id="metodologia">
+  <p class="section-label">Proceso</p>
+  <h2 class="section-title">Cómo trabajamos</h2>
+  <p class="section-sub">Metodología en 4 etapas con entregable firmado al final.</p>
+  <div class="timeline">
+    <div class="timeline-step">
+      <div class="step-num">📋</div>
+      <h3>Autorización</h3>
+      <p>Documento firmado antes de iniciar cualquier actividad. Sin excepciones.</p>
+    </div>
+    <div class="timeline-step">
+      <div class="step-num">🔍</div>
+      <h3>Reconocimiento</h3>
+      <p>OSINT y recon pasivo. DNS, WHOIS, historial, tecnologías expuestas.</p>
+    </div>
+    <div class="timeline-step">
+      <div class="step-num">⚡</div>
+      <h3>Análisis</h3>
+      <p>Escaneo activo con Nikto/Nuclei y análisis estático de código fuente.</p>
+    </div>
+    <div class="timeline-step">
+      <div class="step-num">📄</div>
+      <h3>Entregable</h3>
+      <p>Reporte PDF firmado digitalmente con hallazgos y recomendaciones.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PRECIOS -->
+<section id="precios">
+  <p class="section-label">Planes</p>
+  <h2 class="section-title">Precios claros y sin letra chica</h2>
+  <p class="section-sub">Escribime para recibir un presupuesto personalizado según tu aplicación y alcance.</p>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <p class="price-plan">Básico</p>
+      <p class="price-amount">Consultar</p>
+      <p class="price-note">Ideal para sitios pequeños y startups</p>
+      <ul class="price-features">
+        <li>Auditoría Black Box</li>
+        <li>Recon pasivo completo</li>
+        <li>Escaneo Nikto + Nuclei</li>
+        <li>Reporte ejecutivo PDF firmado</li>
+      </ul>
+      <a href="#contacto" class="btn-price">Solicitar presupuesto</a>
+    </div>
+    <div class="price-card featured">
+      <span class="featured-badge">MÁS SOLICITADO</span>
+      <p class="price-plan">Profesional</p>
+      <p class="price-amount">Consultar</p>
+      <p class="price-note">Para empresas con mayor superficie de ataque</p>
+      <ul class="price-features">
+        <li>Black Box + Gray Box</li>
+        <li>Análisis SAST (Semgrep + Trufflehog)</li>
+        <li>IA local con Ollama</li>
+        <li>Reporte detallado con CVSS</li>
+        <li>Seguimiento post-auditoría</li>
+      </ul>
+      <a href="#contacto" class="btn-price">Solicitar presupuesto</a>
+    </div>
+    <div class="price-card">
+      <p class="price-plan">Custom</p>
+      <p class="price-amount">A medida</p>
+      <p class="price-note">Alcance y modalidad personalizados</p>
+      <ul class="price-features">
+        <li>Todo lo del plan Profesional</li>
+        <li>Consultoría de remediación</li>
+        <li>Re-test post correcciones</li>
+        <li>SLA y acuerdo de confidencialidad</li>
+      </ul>
+      <a href="#contacto" class="btn-price">Hablar de tu proyecto</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SOBRE MÍ -->
+<section id="sobre-mi">
+  <div class="about-wrap">
+    <div>
+      <div class="about-avatar">🛡️</div>
+    </div>
+    <div class="about-text">
+      <h2>Danilo — <span style="color:var(--accent)">DaniAngel79</span></h2>
+      <p class="about-role">Especialista en Seguridad Ofensiva · Auditoría Web · OSINT</p>
+      <p>
+        Desarrollo y opero un ecosistema de herramientas de auditoría web construido sobre Kali Linux, con VPN WireGuard dedicada y modelos de IA corriendo 100% en local para garantizar la confidencialidad de cada cliente.
+      </p>
+      <p>
+        Cada auditoría incluye un documento de autorización firmado antes de iniciar, y un reporte PDF con firma digital RSA-SHA256 como entregable final. Sin atajos, sin letra chica.
+      </p>
+      <div class="about-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Kali Linux</span>
+        <span class="tag">OWASP</span>
+        <span class="tag">Nuclei</span>
+        <span class="tag">Semgrep</span>
+        <span class="tag">WireGuard</span>
+        <span class="tag">OSINT</span>
+        <span class="tag">Ollama</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<div id="contacto">
+  <div>
+    <p class="section-label">Contacto</p>
+    <h2 class="section-title">¿Hablamos?</h2>
+    <div class="contact-box">
+      <p class="contact-sub">
+        Escribime directamente para coordinar una consulta inicial gratuita de 15 minutos. Sin compromiso.
+      </p>
+      <a href="mailto:infra.socrecon@proton.me" class="contact-email">
+        ✉️ infra.socrecon@proton.me
+      </a>
+      <br><br>
+      <a href="mailto:infra.socrecon@proton.me?subject=Solicitud%20de%20Auditor%C3%ADa%20Web" class="btn-primary" style="display:inline-flex;margin:0 auto;">
+        Contact for Audit →
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 AuditWeb · <a href="https://github.com/DaniAngel79/-audit-web-toolkit" target="_blank" rel="noopener noreferrer">DaniAngel79</a></span>
+  <span>Todos los escaneos se realizan bajo autorización escrita previa.</span>
+</footer>
+
+<script>
+  // NAVBAR scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function() {
+    navbar.classList.toggle('scrolled', window.scrollY > 30);
+  }, { passive: true });
+
+  // HAMBURGER menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+  hamburger.addEventListener('click', function() {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() { navLinks.classList.remove('open'); });
+  });
+
+  // DEMO ANIMADA — datos ficticios
+  const FINDINGS = [
+    '🔴 [HIGH] SQLi detectado — /search?q=',
+    '🟡 [MED] CSP ausente — /login',
+    '🟡 [MED] HSTS no configurado',
+    '🟢 [LOW] Server header expuesto — Apache/2.4.7',
+    '🟡 [MED] X-Frame-Options ausente',
+    '🔴 [HIGH] Open redirect — /redirect?url=',
+    '🟢 [LOW] jQuery desactualizado (1.11.1)',
+    '🟢 [LOW] Directory listing — /assets/'
+  ];
+
+  const MODULES = ['recon pasivo', 'nikto', 'nuclei', 'whitebox', 'report'];
+  const TARGET_HIGH = 2, TARGET_MED = 5, TARGET_LOW = 8;
+
+  const progressBar  = document.getElementById('progressBar');
+  const moduleLabel  = document.getElementById('moduleLabel');
+  const cntHigh      = document.getElementById('cntHigh');
+  const cntMed       = document.getElementById('cntMed');
+  const cntLow       = document.getElementById('cntLow');
+  const findingsList = document.getElementById('findingsList');
+  const demoFooter   = document.getElementById('demoFooter');
+  const badgeLive    = document.getElementById('badgeLive');
+  const btnRestart   = document.getElementById('btnRestart');
+
+  var timers  = [];
+  var running = false;
+
+  function clearTimers() {
+    timers.forEach(function(id) { clearTimeout(id); });
+    timers = [];
+  }
+
+  function resetDemo() {
+    clearTimers();
+    progressBar.style.transition = 'none';
+    progressBar.style.width = '0%';
+    moduleLabel.textContent = 'iniciando...';
+    cntHigh.textContent = '0';
+    cntMed.textContent  = '0';
+    cntLow.textContent  = '0';
+    // Vaciar lista de hallazgos de forma segura
+    while (findingsList.firstChild) {
+      findingsList.removeChild(findingsList.firstChild);
+    }
+    demoFooter.classList.remove('visible');
+    badgeLive.textContent = 'EN VIVO';
+    running = false;
+  }
+
+  function animateCounter(el, target, duration) {
+    var current = 0;
+    var step = Math.max(1, Math.ceil(target / (duration / 120)));
+    var id = setInterval(function() {
+      current = Math.min(current + step, target);
+      el.textContent = String(current);
+      if (current >= target) clearInterval(id);
+    }, 120);
+    timers.push(id);
+  }
+
+  function runDemo() {
+    if (running) return;
+    running = true;
+    resetDemo();
+
+    // Barra de progreso
+    void progressBar.offsetWidth;
+    progressBar.style.transition = 'width 5s linear';
+    progressBar.style.width = '100%';
+
+    // Módulos rotativos
+    MODULES.forEach(function(mod, i) {
+      var t = setTimeout(function() { moduleLabel.textContent = mod; }, i * 1000);
+      timers.push(t);
+    });
+
+    // Contadores
+    timers.push(setTimeout(function() { animateCounter(cntHigh, TARGET_HIGH, 2000); }, 1500));
+    timers.push(setTimeout(function() { animateCounter(cntMed,  TARGET_MED,  2500); }, 2000));
+    timers.push(setTimeout(function() { animateCounter(cntLow,  TARGET_LOW,  3000); }, 2500));
+
+    // Hallazgos apareciendo uno a uno
+    FINDINGS.forEach(function(text, i) {
+      var t = setTimeout(function() {
+        var div = document.createElement('div');
+        div.className = 'finding-item';
+        div.textContent = text;
+        findingsList.appendChild(div);
+        // Forzar reflow para activar la transición CSS
+        void div.offsetWidth;
+        div.classList.add('visible');
+      }, 1800 + i * 420);
+      timers.push(t);
+    });
+
+    // Footer final
+    var tFinal = setTimeout(function() {
+      demoFooter.classList.add('visible');
+      badgeLive.textContent = 'COMPLETO';
+      running = false;
+    }, 1800 + FINDINGS.length * 420 + 600);
+    timers.push(tFinal);
+  }
+
+  // Activar con IntersectionObserver al entrar en viewport
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !running) {
+        setTimeout(runDemo, 400);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  observer.observe(document.getElementById('demoPanel'));
+
+  btnRestart.addEventListener('click', function() {
+    resetDemo();
+    setTimeout(runDemo, 300);
+  });
+</script>
+
+</body>
+</html>
