@@ -131,6 +131,9 @@
     .demo-disclaimer { text-align: center; color: var(--muted); font-size: 0.72rem; margin-top: 1rem; opacity: 0.6; }
 
     /* ── TECH STACK ── */
+    #video-demo { padding: 80px 5%; text-align: center; }
+    .video-wrapper { max-width: 860px; margin: 2rem auto 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
+    .video-wrapper video { width: 100%; display: block; background: #000; }
     .stack-row { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin-top: 1rem; }
     .stack-badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 1rem; border-radius: 20px; font-size: 0.82rem; font-weight: 600; border: 1px solid; }
 
@@ -482,6 +485,21 @@
     </div>
   </div>
 </div>
+
+<hr class="divider">
+
+<!-- VIDEO DEMO REAL -->
+<section id="video-demo">
+  <p class="section-label">Demo Real</p>
+  <h2 class="section-title">El escáner en acción</h2>
+  <p class="section-sub">Grabación real de una auditoría con Nmap — reconocimiento, detección de servicios y clasificación de hallazgos.</p>
+  <div class="video-wrapper reveal">
+    <video controls preload="metadata" poster="">
+      <source src="demo.mp4" type="video/mp4">
+      Tu navegador no soporta video HTML5.
+    </video>
+  </div>
+</section>
 
 <hr class="divider">
 
