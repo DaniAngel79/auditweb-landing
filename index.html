@@ -187,6 +187,161 @@
     footer { border-top: 1px solid var(--border); padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 0.78rem; }
     footer a { color: var(--accent); }
 
+    /* ── ANIMACIONES GLOBALES ── */
+    @keyframes fadeUp   { from { opacity:0; transform:translateY(32px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn   { from { opacity:0; } to { opacity:1; } }
+    @keyframes float    { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-9px); } }
+    @keyframes pulseRing {
+      0%   { box-shadow: 0 0 0 0 rgba(100,255,218,0.45); }
+      70%  { box-shadow: 0 0 0 14px rgba(100,255,218,0); }
+      100% { box-shadow: 0 0 0 0 rgba(100,255,218,0); }
+    }
+    @keyframes gradBorder {
+      0%,100% { border-color: rgba(100,255,218,0.4); }
+      50%      { border-color: rgba(0,180,216,0.75); }
+    }
+    @keyframes scanline {
+      0%   { top: -4px; }
+      100% { top: 100%; }
+    }
+
+    /* Scroll reveal */
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-d1 { transition-delay:0.1s; }
+    .reveal-d2 { transition-delay:0.2s; }
+    .reveal-d3 { transition-delay:0.3s; }
+    .reveal-d4 { transition-delay:0.4s; }
+
+    /* Hero animado */
+    #hero-canvas { position:absolute; inset:0; pointer-events:none; opacity:0.35; }
+    .hero-inner { animation: fadeUp 0.9s 0.1s ease both; }
+    .eyebrow    { animation: fadeIn 0.7s 0.3s ease both; opacity:0; animation-fill-mode:both; }
+
+    /* Glow en step-num */
+    .step-num { animation: pulseRing 2.8s ease-in-out infinite; }
+
+    /* 3D cards */
+    .feature-card {
+      transform-style: preserve-3d;
+      transition: border-color 0.2s, transform 0.28s ease, box-shadow 0.28s ease;
+    }
+    .feature-card:hover {
+      border-color: rgba(100,255,218,0.5);
+      transform: translateY(-8px) perspective(700px) rotateX(3deg);
+      box-shadow: 0 22px 44px rgba(0,0,0,0.45), 0 0 24px rgba(100,255,218,0.07);
+    }
+    .price-card { transition: border-color 0.2s, transform 0.28s ease, box-shadow 0.28s ease; }
+    .price-card:hover { transform: translateY(-7px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+    .price-card.featured { animation: gradBorder 3.2s ease infinite; }
+
+    /* ── STATS BAR ── */
+    .stats-bar { background:var(--bg2); padding:48px 5%; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .stats-bar > div { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; text-align:center; }
+    .stat-num {
+      font-size:2.4rem; font-weight:800; display:block; line-height:1; margin-bottom:0.35rem;
+      background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    }
+    .stat-label { font-size:0.8rem; color:var(--muted); font-weight:500; }
+    .stat-suffix { font-size:1.4rem; }
+
+    /* ── PORTFOLIO ── */
+    #portfolio { padding:80px 5%; background:var(--bg2); }
+    #portfolio > div { max-width:1100px; margin:0 auto; }
+    .portfolio-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.6rem; margin-top:3rem; }
+    .browser-frame {
+      background:#151e30; border-radius:10px; overflow:hidden;
+      border:1px solid rgba(255,255,255,0.07);
+      transition:transform 0.35s ease, box-shadow 0.35s ease;
+      animation: float 7s ease-in-out infinite;
+    }
+    .browser-frame:nth-child(2) { animation-delay:-2s; }
+    .browser-frame:nth-child(3) { animation-delay:-4s; }
+    .browser-frame:nth-child(4) { animation-delay:-6s; }
+    .browser-frame:hover {
+      transform: perspective(900px) rotateX(-4deg) rotateY(3deg) translateY(-10px) !important;
+      box-shadow: 0 32px 64px rgba(0,0,0,0.55), 0 0 32px rgba(100,255,218,0.07);
+      animation-play-state: paused;
+    }
+    .browser-chrome { background:#1e2840; padding:9px 14px; display:flex; align-items:center; gap:8px; }
+    .b-dots { display:flex; gap:5px; }
+    .b-dots span { width:9px; height:9px; border-radius:50%; }
+    .b-red { background:#ff5f57; } .b-yellow { background:#febc2e; } .b-green { background:#28c840; }
+    .b-url { flex:1; background:rgba(255,255,255,0.06); border-radius:4px; padding:3px 10px; font-size:0.68rem; color:var(--muted); font-family:monospace; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+    .browser-content { height:210px; position:relative; overflow:hidden; }
+    .browser-scanline {
+      position:absolute; left:0; right:0; height:3px;
+      background:linear-gradient(90deg,transparent,rgba(100,255,218,0.18),transparent);
+      animation: scanline 3.5s linear infinite; pointer-events:none; z-index:2;
+    }
+    .browser-label {
+      position:absolute; bottom:0; left:0; right:0;
+      background:linear-gradient(to top, rgba(10,16,32,0.97) 60%, transparent);
+      padding:1.2rem 1rem 0.8rem; z-index:3;
+      font-size:0.82rem; font-weight:700; color:var(--text);
+    }
+    .browser-sublabel { font-size:0.7rem; color:var(--muted); font-weight:400; }
+
+    /* Mockup — gastronomía */
+    .mock-restaurant {
+      background:linear-gradient(160deg,#1a0805 0%,#3a1508 55%,#1a0805 100%);
+    }
+    .mock-restaurant::before {
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(ellipse 60% 40% at 50% 25%,rgba(255,140,40,0.18) 0%,transparent 70%),
+                 repeating-linear-gradient(0deg,rgba(255,255,255,0.015) 0px,transparent 1px,transparent 38px);
+    }
+    .mock-restaurant::after {
+      content:'RESTAURANTE  ·  MENÚ  ·  RESERVAS\A ════════════════════════\A  "La mejor experiencia gastronómica"\A ──────────────────────────────\A  Menú del día   Carta   Eventos';
+      white-space:pre; position:absolute; top:14px; left:16px;
+      font-size:0.58rem; color:rgba(255,170,80,0.75); line-height:2; font-family:monospace;
+    }
+
+    /* Mockup — servicios profesionales */
+    .mock-pro {
+      background:linear-gradient(160deg,#050f1e 0%,#0a1e3a 60%,#050f1e 100%);
+    }
+    .mock-pro::before {
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(ellipse 50% 60% at 15% 50%,rgba(100,255,218,0.06) 0%,transparent 70%),
+                 linear-gradient(90deg,rgba(100,255,218,0.04) 1px,transparent 1px) 0 0 / 28px 28px,
+                 linear-gradient(0deg,rgba(100,255,218,0.04) 1px,transparent 1px) 0 0 / 28px 28px;
+    }
+    .mock-pro::after {
+      content:'ESTUDIO PROFESIONAL\A ══════════════════\A  ▸ Inicio   ▸ Servicios\A  ▸ Equipo   ▸ Contacto\A ──────────────────\A  [  Consulta gratuita  ]';
+      white-space:pre; position:absolute; top:14px; left:16px;
+      font-size:0.58rem; color:rgba(100,220,255,0.7); line-height:2; font-family:monospace;
+    }
+
+    /* Mockup — ecommerce */
+    .mock-shop {
+      background:linear-gradient(140deg,#0d0d1a 0%,#180d30 60%,#0d0d1a 100%);
+    }
+    .mock-shop::before {
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(circle at 75% 25%,rgba(180,80,255,0.12) 0%,transparent 55%),
+                 radial-gradient(circle at 20% 75%,rgba(0,180,216,0.10) 0%,transparent 55%);
+    }
+    .mock-shop::after {
+      content:'TIENDA ONLINE ·  🛒  ·  Inicio\A ─────────────────────────────\A ┌──────┐ ┌──────┐ ┌──────┐\A │$  49 │ │$  89 │ │$ 129 │\A └──────┘ └──────┘ └──────┘\A     [ Agregar al carrito ]';
+      white-space:pre; position:absolute; top:12px; left:14px;
+      font-size:0.57rem; color:rgba(190,100,255,0.7); line-height:1.95; font-family:monospace;
+    }
+
+    /* Mockup — reporte auditoría */
+    .mock-audit {
+      background:linear-gradient(140deg,#04090f 0%,#081520 60%,#04090f 100%);
+    }
+    .mock-audit::before {
+      content:'';position:absolute;inset:0;
+      background:repeating-linear-gradient(0deg,rgba(100,255,218,0.025) 0px,transparent 1px,transparent 20px);
+    }
+    .mock-audit::after {
+      content:'⚡ REPORTE DE AUDITORÍA WEB\A ════════════════════════\A  🔴 HIGH   ▓▓▓▓▓▓▓▓  2 hallazgos\A  🟡 MED    ▓▓▓▓▓▓▓▓  5 hallazgos\A  🟢 LOW    ▓▓▓▓▓▓▓▓  8 hallazgos\A  ✓ Firmado RSA-SHA256: a3f8c…';
+      white-space:pre; position:absolute; top:12px; left:14px;
+      font-size:0.57rem; color:rgba(100,255,218,0.7); line-height:1.95; font-family:monospace;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--bg3); padding: 1.5rem; gap: 1.2rem; border-bottom: 1px solid var(--border); }
@@ -198,6 +353,9 @@
       .about-wrap { grid-template-columns: 1fr; text-align: center; }
       .about-tags { justify-content: center; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .stats-bar > div { grid-template-columns: repeat(2,1fr); }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .browser-frame { animation: none; }
     }
   </style>
 </head>
@@ -221,6 +379,7 @@
 
 <!-- HERO -->
 <section id="hero">
+  <canvas id="hero-canvas"></canvas>
   <div class="hero-inner">
     <span class="eyebrow">Diseño Web · Seguridad · Auditoría</span>
     <h1>Tu presencia online. <em>Segura desde el día uno.</em></h1>
@@ -233,6 +392,28 @@
     </div>
   </div>
 </section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div>
+    <div class="stat-item reveal">
+      <span class="stat-num" data-target="15">0</span>
+      <span class="stat-label">Auditorías completadas</span>
+    </div>
+    <div class="stat-item reveal reveal-d1">
+      <span class="stat-num" data-target="100">0</span>
+      <span class="stat-label">% confidencialidad garantizada</span>
+    </div>
+    <div class="stat-item reveal reveal-d2">
+      <span class="stat-num" data-target="0">0</span>
+      <span class="stat-label">Brechas post-auditoría reportadas</span>
+    </div>
+    <div class="stat-item reveal reveal-d3">
+      <span class="stat-num" data-target="48">0</span>
+      <span class="stat-label">Horas de respuesta máxima</span>
+    </div>
+  </div>
+</div>
 
 <hr class="divider">
 
@@ -316,6 +497,59 @@
     <span class="stack-badge" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.2);color:#ccd6f6;">🦙 Ollama</span>
   </div>
 </section>
+
+<hr class="divider">
+
+<!-- PORTFOLIO -->
+<div id="portfolio">
+  <div>
+    <p class="section-label">Portfolio</p>
+    <h2 class="section-title">Ejemplos de lo que construimos</h2>
+    <p class="section-sub" style="max-width:520px;margin:0 auto 0;">Cada proyecto con identidad propia, seguridad desde el código y entrega en menos de una semana.</p>
+    <div class="portfolio-grid">
+      <div class="browser-frame reveal">
+        <div class="browser-chrome">
+          <div class="b-dots"><span class="b-red"></span><span class="b-yellow"></span><span class="b-green"></span></div>
+          <span class="b-url">restaurante-ejemplo.com</span>
+        </div>
+        <div class="browser-content mock-restaurant">
+          <div class="browser-scanline"></div>
+          <div class="browser-label">Gastronomía &amp; Restaurantes<br><span class="browser-sublabel">Landing + reservas online + menú digital</span></div>
+        </div>
+      </div>
+      <div class="browser-frame reveal reveal-d1">
+        <div class="browser-chrome">
+          <div class="b-dots"><span class="b-red"></span><span class="b-yellow"></span><span class="b-green"></span></div>
+          <span class="b-url">estudio-profesional.com</span>
+        </div>
+        <div class="browser-content mock-pro">
+          <div class="browser-scanline"></div>
+          <div class="browser-label">Servicios Profesionales<br><span class="browser-sublabel">Estudios jurídicos, contadores, consultoras</span></div>
+        </div>
+      </div>
+      <div class="browser-frame reveal reveal-d2">
+        <div class="browser-chrome">
+          <div class="b-dots"><span class="b-red"></span><span class="b-yellow"></span><span class="b-green"></span></div>
+          <span class="b-url">tienda-online.com</span>
+        </div>
+        <div class="browser-content mock-shop">
+          <div class="browser-scanline"></div>
+          <div class="browser-label">Tiendas Online &amp; E-commerce<br><span class="browser-sublabel">Carrito, pagos y catálogo de productos</span></div>
+        </div>
+      </div>
+      <div class="browser-frame reveal reveal-d3">
+        <div class="browser-chrome">
+          <div class="b-dots"><span class="b-red"></span><span class="b-yellow"></span><span class="b-green"></span></div>
+          <span class="b-url">cliente.com — reporte-auditoria.pdf</span>
+        </div>
+        <div class="browser-content mock-audit">
+          <div class="browser-scanline"></div>
+          <div class="browser-label">Reporte de Auditoría Web<br><span class="browser-sublabel">Entregable firmado RSA-SHA256 · Hallazgos clasificados</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <hr class="divider">
 
@@ -734,6 +968,121 @@
     resetDemo();
     setTimeout(runDemo, 300);
   });
+
+  // ── PARTÍCULAS HERO ──────────────────────────────────────────────
+  (function() {
+    var canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    var W, H;
+
+    function resize() {
+      W = canvas.width  = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+
+    for (var i = 0; i < 55; i++) {
+      particles.push({
+        x: Math.random() * 1200,
+        y: Math.random() * 900,
+        r: Math.random() * 1.5 + 0.4,
+        dx: (Math.random() - 0.5) * 0.35,
+        dy: (Math.random() - 0.5) * 0.35,
+        a: Math.random() * 0.5 + 0.2
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(function(p) {
+        ctx.beginPath();
+        ctx.arc(p.x % W, p.y % H, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(100,255,218,' + p.a + ')';
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0) p.x = W;
+        if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H;
+        if (p.y > H) p.y = 0;
+      });
+      // líneas de conexión
+      for (var i = 0; i < particles.length; i++) {
+        for (var j = i + 1; j < particles.length; j++) {
+          var dx = particles[i].x - particles[j].x;
+          var dy = particles[i].y - particles[j].y;
+          var dist = Math.sqrt(dx*dx + dy*dy);
+          if (dist < 110) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x % W, particles[i].y % H);
+            ctx.lineTo(particles[j].x % W, particles[j].y % H);
+            ctx.strokeStyle = 'rgba(100,255,218,' + (0.07 * (1 - dist/110)) + ')';
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  // ── SCROLL REVEAL ─────────────────────────────────────────────────
+  (function() {
+    var revealObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    // Auto-marcar secciones principales
+    var targets = document.querySelectorAll(
+      '.feature-card, .price-card, .service-card, .timeline-step, ' +
+      '.stat-item, .browser-frame, .section-title, .section-sub, ' +
+      '.section-label, .about-wrap, .contact-box'
+    );
+    targets.forEach(function(el) {
+      if (!el.classList.contains('reveal')) {
+        el.classList.add('reveal');
+      }
+      revealObs.observe(el);
+    });
+
+    // Los que ya tienen .reveal
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      revealObs.observe(el);
+    });
+  })();
+
+  // ── STATS COUNTER ─────────────────────────────────────────────────
+  (function() {
+    var statsObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (!e.isIntersecting) return;
+        statsObs.unobserve(e.target);
+        var el = e.target;
+        var target = parseInt(el.getAttribute('data-target'), 10);
+        if (target === 0) { el.textContent = '0'; return; }
+        var current = 0;
+        var step = Math.max(1, Math.ceil(target / 40));
+        var id = setInterval(function() {
+          current = Math.min(current + step, target);
+          el.textContent = current + (target === 100 ? '' : '');
+          if (current >= target) clearInterval(id);
+        }, 40);
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-num[data-target]').forEach(function(el) {
+      statsObs.observe(el);
+    });
+  })();
 </script>
 
 </body>
