@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AuditWeb — Diseño Web Seguro y Auditoría de Seguridad Profesional</title>
-  <meta name="description" content="Diseñamos sitios web con seguridad incluida desde el día uno. Y auditamos los que ya existen. Metodología técnica, reportes firmados digitalmente, confidencialidad garantizada.">
+  <title>AuditWeb — Revisión de seguridad web para comercios y profesionales</title>
+  <meta name="description" content="Revisamos la seguridad de tu sitio web con herramientas profesionales, con tu permiso por escrito y sin acceder a información privada salvo que lo autorices. Te entregamos un informe claro con lo que hay que corregir.">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="AuditWeb — Auditoría de Seguridad Web">
-  <meta property="og:description" content="Identificamos vulnerabilidades antes que los atacantes.">
+  <meta property="og:title" content="AuditWeb — Revisión de seguridad web">
+  <meta property="og:description" content="Sabé qué tan seguro es tu sitio web. En claro.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,11 +74,11 @@
       background: radial-gradient(ellipse at 50% 0%, #1a2a4a 0%, var(--bg) 65%);
       position: relative; overflow: hidden;
     }
-    .hero-inner { position: relative; max-width: 720px; }
+    .hero-inner { position: relative; max-width: 740px; }
     .eyebrow { display: inline-block; color: var(--accent); font-size: 0.72rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1.2rem; }
     h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.2rem; }
     h1 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero-sub { color: var(--muted); font-size: 1.05rem; max-width: 520px; margin: 0 auto 2.2rem; }
+    .hero-sub { color: var(--muted); font-size: 1.05rem; max-width: 560px; margin: 0 auto 2.2rem; }
     .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
     .btn-primary { background: var(--grad); color: var(--bg3); padding: 0.75rem 1.6rem; border-radius: var(--radius); font-size: 0.9rem; font-weight: 800; transition: opacity 0.2s, transform 0.2s; display: inline-flex; align-items: center; gap: 0.4rem; }
     .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
@@ -89,16 +89,30 @@
     section { padding: 80px 5%; max-width: 1100px; margin: 0 auto; }
     .section-label { text-align: center; font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
     .section-title { text-align: center; font-size: clamp(1.4rem,3vw,2rem); font-weight: 800; color: var(--text); margin-bottom: 0.8rem; }
-    .section-sub { text-align: center; color: var(--muted); font-size: 0.95rem; max-width: 500px; margin: 0 auto 3rem; }
+    .section-sub { text-align: center; color: var(--muted); font-size: 0.95rem; max-width: 560px; margin: 0 auto 3rem; }
     .divider { border: none; border-top: 1px solid var(--border); max-width: 1100px; margin: 0 auto; }
 
-    /* ── FEATURES ── */
+    /* ── TRUST BAR ── */
+    .trust-bar { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 5%; }
+    .trust-bar > div { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 0.8rem 1.8rem; justify-content: center; align-items: center; }
+    .trust-chip { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--muted); font-size: 0.82rem; font-weight: 600; }
+    .trust-chip::before { content: '✓'; color: var(--accent); font-weight: 800; }
+
+    /* ── FEATURES / QUÉ REVISAMOS ── */
     .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; }
-    .feature-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(100,255,218,0.12); border-radius: var(--radius); padding: 1.8rem; transition: border-color 0.2s, transform 0.2s; }
-    .feature-card:hover { border-color: rgba(100,255,218,0.35); transform: translateY(-3px); }
+    .feature-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(100,255,218,0.12); border-radius: var(--radius); padding: 1.8rem;
+      transform-style: preserve-3d; transition: border-color 0.2s, transform 0.28s ease, box-shadow 0.28s ease; }
+    .feature-card:hover {
+      border-color: rgba(100,255,218,0.5);
+      transform: translateY(-8px) perspective(700px) rotateX(3deg);
+      box-shadow: 0 22px 44px rgba(0,0,0,0.45), 0 0 24px rgba(100,255,218,0.07);
+    }
     .feature-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
     .feature-card h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
     .feature-card p { color: var(--muted); font-size: 0.88rem; }
+    .revisamos-note { max-width: 760px; margin: 2.4rem auto 0; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem 1.4rem; }
+    .revisamos-note p { color: var(--muted); font-size: 0.86rem; margin: 0.2rem 0; }
+    .revisamos-note strong { color: var(--text); }
 
     /* ── DEMO ── */
     #demo { padding: 80px 5%; background: var(--bg2); }
@@ -130,33 +144,26 @@
     .btn-restart:hover { border-color: var(--accent); color: var(--accent); }
     .demo-disclaimer { text-align: center; color: var(--muted); font-size: 0.72rem; margin-top: 1rem; opacity: 0.6; }
 
-    /* ── TECH STACK ── */
-    #video-demo { padding: 80px 5%; text-align: center; }
-    .video-wrapper { max-width: 860px; margin: 2rem auto 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
-    .video-wrapper video { width: 100%; display: block; background: #000; }
-    .stack-row { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin-top: 1rem; }
-    .stack-badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 1rem; border-radius: 20px; font-size: 0.82rem; font-weight: 600; border: 1px solid; }
-
-    /* ── SERVICIOS ── */
-    .services-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
-    .service-card { background: rgba(255,255,255,0.03); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 1.2rem 1.4rem; transition: background 0.2s; }
-    .service-card:hover { background: rgba(100,255,218,0.04); }
-    .service-card h3 { color: var(--text); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
-    .service-card p { color: var(--muted); font-size: 0.85rem; }
-
     /* ── METODOLOGÍA ── */
     .timeline { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; position: relative; margin-top: 1rem; }
     .timeline::before { content: ''; position: absolute; top: 28px; left: 12.5%; right: 12.5%; height: 2px; background: linear-gradient(90deg,var(--accent),var(--accent2)); opacity: 0.3; }
     .timeline-step { text-align: center; position: relative; }
-    .step-num { width: 56px; height: 56px; background: var(--bg2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin: 0 auto 1rem; position: relative; z-index: 1; }
+    .step-num { width: 56px; height: 56px; background: var(--bg2); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin: 0 auto 1rem; position: relative; z-index: 1; animation: pulseRing 2.8s ease-in-out infinite; }
     .timeline-step h3 { font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
     .timeline-step p { color: var(--muted); font-size: 0.82rem; }
 
+    /* ── QUÉ RECIBÍS ── */
+    .recibis-list { max-width: 760px; margin: 0 auto; display: grid; gap: 0.8rem; }
+    .recibis-item { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 1rem 1.3rem; transition: background 0.2s; }
+    .recibis-item:hover { background: rgba(100,255,218,0.04); }
+    .recibis-item h3 { color: var(--text); font-size: 0.92rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .recibis-item p { color: var(--muted); font-size: 0.86rem; }
+
     /* ── PRECIOS ── */
     .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; align-items: start; }
-    .price-card { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; transition: border-color 0.2s, transform 0.2s; }
-    .price-card:hover { border-color: rgba(100,255,218,0.3); transform: translateY(-3px); }
-    .price-card.featured { border-color: rgba(100,255,218,0.4); background: rgba(100,255,218,0.04); position: relative; }
+    .price-card { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; transition: border-color 0.2s, transform 0.28s ease, box-shadow 0.28s ease; }
+    .price-card:hover { border-color: rgba(100,255,218,0.3); transform: translateY(-7px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+    .price-card.featured { border-color: rgba(100,255,218,0.4); background: rgba(100,255,218,0.04); position: relative; animation: gradBorder 3.2s ease infinite; }
     .featured-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--grad); color: var(--bg3); font-size: 0.68rem; font-weight: 800; padding: 3px 12px; border-radius: 20px; white-space: nowrap; }
     .price-plan { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
     .price-amount { font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 0.2rem; }
@@ -168,6 +175,30 @@
     .btn-price:hover { background: rgba(100,255,218,0.08); }
     .price-card.featured .btn-price { background: var(--grad); color: var(--bg3); border: none; }
     .price-card.featured .btn-price:hover { opacity: 0.88; }
+    .plans-note { text-align: center; color: var(--muted); font-size: 0.85rem; margin: 2rem auto 0; max-width: 620px; }
+
+    /* ── QUÉ NO INCLUYE ── */
+    .exclude-box { max-width: 760px; margin: 0 auto; background: rgba(255,123,114,0.04); border: 1px solid rgba(255,123,114,0.18); border-radius: 12px; padding: 1.4rem 1.8rem; list-style: none; }
+    .exclude-box li { color: var(--muted); font-size: 0.9rem; padding: 0.55rem 0 0.55rem 1.7rem; position: relative; border-bottom: 1px solid var(--border); }
+    .exclude-box li:last-child { border-bottom: none; }
+    .exclude-box li::before { content: '✕'; position: absolute; left: 0; color: var(--high); font-weight: 800; }
+    .exclude-box strong { color: var(--text); }
+
+    /* ── AUTORIZACIÓN / LEGAL ── */
+    .legal-box { max-width: 760px; margin: 0 auto; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px; padding: 1.9rem 2.1rem; }
+    .legal-box p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; }
+    .legal-box p:last-of-type { margin-bottom: 0; }
+    .legal-seal { text-align: center; color: var(--accent); font-size: 0.8rem; font-weight: 600; margin-top: 1.4rem; letter-spacing: 0.5px; }
+
+    /* ── FAQ ── */
+    .faq-wrap { max-width: 760px; margin: 0 auto; display: grid; gap: 0.8rem; }
+    .faq-item { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: var(--radius); padding: 0 1.3rem; transition: border-color 0.2s; }
+    .faq-item[open] { border-color: rgba(100,255,218,0.3); }
+    .faq-item summary { cursor: pointer; padding: 1rem 0; color: var(--text); font-weight: 600; font-size: 0.92rem; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: var(--accent); font-size: 1.2rem; font-weight: 700; flex-shrink: 0; }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-item p { color: var(--muted); font-size: 0.88rem; padding: 0 0 1.1rem; }
 
     /* ── SOBRE MÍ ── */
     .about-wrap { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: center; }
@@ -181,19 +212,24 @@
     /* ── CONTACTO ── */
     #contacto { background: var(--bg2); padding: 80px 5%; }
     #contacto > div { max-width: 1100px; margin: 0 auto; text-align: center; }
-    .contact-box { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem; max-width: 520px; margin: 0 auto; }
-    .contact-email { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(100,255,218,0.06); border: 1px solid rgba(100,255,218,0.2); color: var(--accent); padding: 0.75rem 1.4rem; border-radius: var(--radius); font-size: 0.95rem; font-weight: 600; margin: 1.2rem 0; transition: background 0.2s; }
-    .contact-email:hover { background: rgba(100,255,218,0.12); }
-    .contact-sub { color: var(--muted); font-size: 0.88rem; margin-bottom: 1.5rem; }
+    .contact-box { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem; max-width: 560px; margin: 0 auto; }
+    .contact-sub { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.8rem; }
+    .contact-btns { display: flex; flex-direction: column; gap: 0.9rem; max-width: 340px; margin: 0 auto; }
+    .btn-wa { background: #25d366; color: #04220f; padding: 0.8rem 1.4rem; border-radius: var(--radius); font-size: 0.92rem; font-weight: 800; transition: opacity 0.2s, transform 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
+    .btn-wa:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-mail { border: 1px solid rgba(100,255,218,0.35); color: var(--accent); padding: 0.8rem 1.4rem; border-radius: var(--radius); font-size: 0.92rem; font-weight: 700; transition: background 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
+    .btn-mail:hover { background: rgba(100,255,218,0.08); }
+    .pay-methods { margin-top: 1.8rem; font-size: 0.82rem; color: var(--muted); letter-spacing: 0.3px; }
+    .pay-methods strong { color: var(--text); }
+    .contact-micro { margin-top: 1.6rem; font-size: 0.78rem; color: var(--muted); }
 
     /* ── FOOTER ── */
-    footer { border-top: 1px solid var(--border); padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 0.78rem; }
-    footer a { color: var(--accent); }
+    footer { border-top: 1px solid var(--border); padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 0.78rem; gap: 0.5rem; flex-wrap: wrap; }
+    footer .foot-brand { color: var(--accent); font-weight: 700; }
 
-    /* ── ANIMACIONES GLOBALES ── */
+    /* ── ANIMACIONES ── */
     @keyframes fadeUp   { from { opacity:0; transform:translateY(32px); } to { opacity:1; transform:translateY(0); } }
     @keyframes fadeIn   { from { opacity:0; } to { opacity:1; } }
-    @keyframes float    { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-9px); } }
     @keyframes pulseRing {
       0%   { box-shadow: 0 0 0 0 rgba(100,255,218,0.45); }
       70%  { box-shadow: 0 0 0 14px rgba(100,255,218,0); }
@@ -203,162 +239,27 @@
       0%,100% { border-color: rgba(100,255,218,0.4); }
       50%      { border-color: rgba(0,180,216,0.75); }
     }
-    @keyframes scanline {
-      0%   { top: -4px; }
-      100% { top: 100%; }
-    }
-
-    /* Scroll reveal */
     .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity:1; transform:translateY(0); }
     .reveal-d1 { transition-delay:0.1s; }
     .reveal-d2 { transition-delay:0.2s; }
     .reveal-d3 { transition-delay:0.3s; }
-    .reveal-d4 { transition-delay:0.4s; }
 
-    /* Hero animado */
     #hero-canvas { position:absolute; inset:0; pointer-events:none; opacity:0.35; }
     .hero-inner { animation: fadeUp 0.9s 0.1s ease both; }
     .eyebrow    { animation: fadeIn 0.7s 0.3s ease both; opacity:0; animation-fill-mode:both; }
-
-    /* Glow en step-num */
-    .step-num { animation: pulseRing 2.8s ease-in-out infinite; }
-
-    /* 3D cards */
-    .feature-card {
-      transform-style: preserve-3d;
-      transition: border-color 0.2s, transform 0.28s ease, box-shadow 0.28s ease;
-    }
-    .feature-card:hover {
-      border-color: rgba(100,255,218,0.5);
-      transform: translateY(-8px) perspective(700px) rotateX(3deg);
-      box-shadow: 0 22px 44px rgba(0,0,0,0.45), 0 0 24px rgba(100,255,218,0.07);
-    }
-    .price-card { transition: border-color 0.2s, transform 0.28s ease, box-shadow 0.28s ease; }
-    .price-card:hover { transform: translateY(-7px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-    .price-card.featured { animation: gradBorder 3.2s ease infinite; }
-
-    /* ── STATS BAR ── */
-    .stats-bar { background:var(--bg2); padding:48px 5%; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
-    .stats-bar > div { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; text-align:center; }
-    .stat-num {
-      font-size:2.4rem; font-weight:800; display:block; line-height:1; margin-bottom:0.35rem;
-      background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-    }
-    .stat-label { font-size:0.8rem; color:var(--muted); font-weight:500; }
-    .stat-suffix { font-size:1.4rem; }
-
-    /* ── PORTFOLIO ── */
-    #portfolio { padding:80px 5%; background:var(--bg2); }
-    #portfolio > div { max-width:1100px; margin:0 auto; }
-    .portfolio-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.6rem; margin-top:3rem; }
-    .browser-frame {
-      background:#151e30; border-radius:10px; overflow:hidden;
-      border:1px solid rgba(255,255,255,0.07);
-      transition:transform 0.35s ease, box-shadow 0.35s ease;
-      animation: float 7s ease-in-out infinite;
-    }
-    .browser-frame:nth-child(2) { animation-delay:-2s; }
-    .browser-frame:nth-child(3) { animation-delay:-4s; }
-    .browser-frame:nth-child(4) { animation-delay:-6s; }
-    .browser-frame:hover {
-      transform: perspective(900px) rotateX(-4deg) rotateY(3deg) translateY(-10px) !important;
-      box-shadow: 0 32px 64px rgba(0,0,0,0.55), 0 0 32px rgba(100,255,218,0.07);
-      animation-play-state: paused;
-    }
-    .browser-chrome { background:#1e2840; padding:9px 14px; display:flex; align-items:center; gap:8px; }
-    .b-dots { display:flex; gap:5px; }
-    .b-dots span { width:9px; height:9px; border-radius:50%; }
-    .b-red { background:#ff5f57; } .b-yellow { background:#febc2e; } .b-green { background:#28c840; }
-    .b-url { flex:1; background:rgba(255,255,255,0.06); border-radius:4px; padding:3px 10px; font-size:0.68rem; color:var(--muted); font-family:monospace; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
-    .browser-content { height:210px; position:relative; overflow:hidden; }
-    .browser-scanline {
-      position:absolute; left:0; right:0; height:3px;
-      background:linear-gradient(90deg,transparent,rgba(100,255,218,0.18),transparent);
-      animation: scanline 3.5s linear infinite; pointer-events:none; z-index:2;
-    }
-    .browser-label {
-      position:absolute; bottom:0; left:0; right:0;
-      background:linear-gradient(to top, rgba(10,16,32,0.97) 60%, transparent);
-      padding:1.2rem 1rem 0.8rem; z-index:3;
-      font-size:0.82rem; font-weight:700; color:var(--text);
-    }
-    .browser-sublabel { font-size:0.7rem; color:var(--muted); font-weight:400; }
-
-    /* Mockup — gastronomía */
-    .mock-restaurant {
-      background:linear-gradient(160deg,#1a0805 0%,#3a1508 55%,#1a0805 100%);
-    }
-    .mock-restaurant::before {
-      content:'';position:absolute;inset:0;
-      background:radial-gradient(ellipse 60% 40% at 50% 25%,rgba(255,140,40,0.18) 0%,transparent 70%),
-                 repeating-linear-gradient(0deg,rgba(255,255,255,0.015) 0px,transparent 1px,transparent 38px);
-    }
-    .mock-restaurant::after {
-      content:'RESTAURANTE  ·  MENÚ  ·  RESERVAS\A ════════════════════════\A  "La mejor experiencia gastronómica"\A ──────────────────────────────\A  Menú del día   Carta   Eventos';
-      white-space:pre; position:absolute; top:14px; left:16px;
-      font-size:0.58rem; color:rgba(255,170,80,0.75); line-height:2; font-family:monospace;
-    }
-
-    /* Mockup — servicios profesionales */
-    .mock-pro {
-      background:linear-gradient(160deg,#050f1e 0%,#0a1e3a 60%,#050f1e 100%);
-    }
-    .mock-pro::before {
-      content:'';position:absolute;inset:0;
-      background:radial-gradient(ellipse 50% 60% at 15% 50%,rgba(100,255,218,0.06) 0%,transparent 70%),
-                 linear-gradient(90deg,rgba(100,255,218,0.04) 1px,transparent 1px) 0 0 / 28px 28px,
-                 linear-gradient(0deg,rgba(100,255,218,0.04) 1px,transparent 1px) 0 0 / 28px 28px;
-    }
-    .mock-pro::after {
-      content:'ESTUDIO PROFESIONAL\A ══════════════════\A  ▸ Inicio   ▸ Servicios\A  ▸ Equipo   ▸ Contacto\A ──────────────────\A  [  Consulta gratuita  ]';
-      white-space:pre; position:absolute; top:14px; left:16px;
-      font-size:0.58rem; color:rgba(100,220,255,0.7); line-height:2; font-family:monospace;
-    }
-
-    /* Mockup — ecommerce */
-    .mock-shop {
-      background:linear-gradient(140deg,#0d0d1a 0%,#180d30 60%,#0d0d1a 100%);
-    }
-    .mock-shop::before {
-      content:'';position:absolute;inset:0;
-      background:radial-gradient(circle at 75% 25%,rgba(180,80,255,0.12) 0%,transparent 55%),
-                 radial-gradient(circle at 20% 75%,rgba(0,180,216,0.10) 0%,transparent 55%);
-    }
-    .mock-shop::after {
-      content:'TIENDA ONLINE ·  🛒  ·  Inicio\A ─────────────────────────────\A ┌──────┐ ┌──────┐ ┌──────┐\A │$  49 │ │$  89 │ │$ 129 │\A └──────┘ └──────┘ └──────┘\A     [ Agregar al carrito ]';
-      white-space:pre; position:absolute; top:12px; left:14px;
-      font-size:0.57rem; color:rgba(190,100,255,0.7); line-height:1.95; font-family:monospace;
-    }
-
-    /* Mockup — reporte auditoría */
-    .mock-audit {
-      background:linear-gradient(140deg,#04090f 0%,#081520 60%,#04090f 100%);
-    }
-    .mock-audit::before {
-      content:'';position:absolute;inset:0;
-      background:repeating-linear-gradient(0deg,rgba(100,255,218,0.025) 0px,transparent 1px,transparent 20px);
-    }
-    .mock-audit::after {
-      content:'⚡ REPORTE DE AUDITORÍA WEB\A ════════════════════════\A  🔴 HIGH   ▓▓▓▓▓▓▓▓  2 hallazgos\A  🟡 MED    ▓▓▓▓▓▓▓▓  5 hallazgos\A  🟢 LOW    ▓▓▓▓▓▓▓▓  8 hallazgos\A  ✓ Firmado RSA-SHA256: a3f8c…';
-      white-space:pre; position:absolute; top:12px; left:14px;
-      font-size:0.57rem; color:rgba(100,255,218,0.7); line-height:1.95; font-family:monospace;
-    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--bg3); padding: 1.5rem; gap: 1.2rem; border-bottom: 1px solid var(--border); }
       .nav-links.open { display: flex; }
       .hamburger { display: flex; }
-      .features-grid, .pricing-grid, .services-grid { grid-template-columns: 1fr; }
+      .features-grid, .pricing-grid { grid-template-columns: 1fr; }
       .timeline { grid-template-columns: repeat(2,1fr); }
       .timeline::before { display: none; }
       .about-wrap { grid-template-columns: 1fr; text-align: center; }
       .about-tags { justify-content: center; }
-      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
-      .stats-bar > div { grid-template-columns: repeat(2,1fr); }
-      .portfolio-grid { grid-template-columns: 1fr; }
-      .browser-frame { animation: none; }
+      footer { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
@@ -368,11 +269,10 @@
 <nav id="navbar">
   <a href="#hero" class="nav-logo">⬡ AUDIT<span>WEB</span></a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#diseno-web">Diseño Web</a></li>
-    <li><a href="#servicios">Auditorías</a></li>
-    <li><a href="#metodologia">Metodología</a></li>
-    <li><a href="#precios">Precios</a></li>
-    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#que-revisamos">Qué revisamos</a></li>
+    <li><a href="#que-recibis">Qué recibís</a></li>
+    <li><a href="#planes">Planes</a></li>
+    <li><a href="#faq">Preguntas</a></li>
     <li><a href="#contacto" class="btn-nav">Contactar</a></li>
   </ul>
   <div class="hamburger" id="hamburger" aria-label="Menú" role="button" tabindex="0">
@@ -384,62 +284,99 @@
 <section id="hero">
   <canvas id="hero-canvas"></canvas>
   <div class="hero-inner">
-    <span class="eyebrow">Diseño Web · Seguridad · Auditoría</span>
-    <h1>Tu presencia online. <em>Segura desde el día uno.</em></h1>
+    <span class="eyebrow">Seguridad web para comercios y profesionales</span>
+    <h1>Sabé qué tan seguro es tu sitio web. <em>En claro.</em></h1>
     <p class="hero-sub">
-      Diseñamos sitios web para comercios y profesionales — y auditamos los que ya existen. Todo con metodología técnica real.
+      Revisamos la seguridad de tu página con herramientas profesionales, con tu permiso por escrito y sin acceder a información privada salvo que vos lo autorices. Te entregamos un informe simple con lo que hay que corregir — y te ayudamos a priorizarlo.
     </p>
     <div class="cta-group">
-      <a href="#diseno-web" class="btn-primary">🌐 Quiero mi web</a>
-      <a href="#servicios" class="btn-secondary">Auditar mi sitio →</a>
+      <a href="#contacto" class="btn-primary">🛡️ Pedir mi revisión</a>
+      <a href="#que-revisamos" class="btn-secondary">Ver qué revisamos →</a>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats-bar">
+<!-- TRUST BAR -->
+<div class="trust-bar">
   <div>
-    <div class="stat-item reveal">
-      <span class="stat-num" data-target="15">0</span>
-      <span class="stat-label">Auditorías completadas</span>
-    </div>
-    <div class="stat-item reveal reveal-d1">
-      <span class="stat-num" data-target="100">0</span>
-      <span class="stat-label">% confidencialidad garantizada</span>
-    </div>
-    <div class="stat-item reveal reveal-d2">
-      <span class="stat-num" data-target="0">0</span>
-      <span class="stat-label">Brechas post-auditoría reportadas</span>
-    </div>
-    <div class="stat-item reveal reveal-d3">
-      <span class="stat-num" data-target="48">0</span>
-      <span class="stat-label">Horas de respuesta máxima</span>
-    </div>
+    <span class="trust-chip reveal">Autorización escrita siempre</span>
+    <span class="trust-chip reveal reveal-d1">Informe verificable</span>
+    <span class="trust-chip reveal reveal-d2">Revisión no intrusiva</span>
+    <span class="trust-chip reveal reveal-d3">Confidencialidad acordada por escrito</span>
   </div>
 </div>
 
-<hr class="divider">
-
-<!-- FEATURES -->
-<section id="features">
-  <p class="section-label">Capacidades del toolkit</p>
-  <h2 class="section-title">Todo lo que necesitás para una auditoría completa</h2>
-  <p class="section-sub">Herramientas profesionales integradas en un ecosistema modular y automatizado.</p>
+<!-- QUÉ REVISAMOS -->
+<section id="que-revisamos">
+  <p class="section-label">Qué revisamos</p>
+  <h2 class="section-title">Qué revisamos en tu sitio</h2>
+  <p class="section-sub">Una foto completa del estado de seguridad de tu web, desde afuera y —si querés— también por dentro.</p>
   <div class="features-grid">
     <div class="feature-card">
-      <div class="feature-icon">⚡</div>
-      <h3>Escaneo dinámico con Nuclei/Nikto</h3>
-      <p>Templates selectivos contra CVEs reales. Detección de misconfiguraciones, headers faltantes y vulnerabilidades conocidas.</p>
+      <div class="feature-icon">🔒</div>
+      <h3>Conexión y certificado</h3>
+      <p>Revisamos tu certificado SSL/TLS (validez, vencimiento, configuración) y si tu sitio fuerza conexión segura (HTTPS).</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">📄</div>
-      <h3>Reportes automáticos en PDF</h3>
-      <p>Entregables firmados digitalmente con RSA-SHA256. Hallazgos clasificados por severidad, listos para presentar al cliente.</p>
+      <div class="feature-icon">🛡️</div>
+      <h3>Configuración de seguridad (headers)</h3>
+      <p>Verificamos las cabeceras que protegen a tus visitantes (HSTS, CSP, X-Frame-Options y otras) y las cookies de tu sitio.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🤖</div>
-      <h3>Integración con IA local (Ollama)</h3>
-      <p>Análisis asistido por IA que corre completamente en local. Sin enviar datos sensibles del cliente a la nube.</p>
+      <div class="feature-icon">🧩</div>
+      <h3>Tecnologías y versiones expuestas</h3>
+      <p>Detectamos qué usa tu sitio (WordPress, servidor, plugins, librerías) y si hay versiones viejas con vulnerabilidades conocidas y publicadas (CVE).</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌐</div>
+      <h3>Superficie expuesta</h3>
+      <p>Puertos web abiertos, subdominios, directorios y archivos accesibles que no deberían estar a la vista, y si tenés un firewall web (WAF).</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📝</div>
+      <h3>WordPress y CMS</h3>
+      <p>Si tu sitio usa WordPress u otro gestor, revisamos plugins, temas y configuración con herramientas específicas (WPScan).</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔎</div>
+      <h3>Reputación e higiene</h3>
+      <p>Consultamos bases de reputación (VirusTotal, AbuseIPDB) para ver si tu dominio o IP aparece marcado.</p>
+    </div>
+  </div>
+  <div class="revisamos-note">
+    <p><strong>Opcional (planes superiores):</strong></p>
+    <p>• <strong>Revisión con acceso (Gray Box):</strong> con credenciales que vos nos des, ampliamos la cobertura a las zonas privadas del sitio.</p>
+    <p>• <strong>Revisión del código (si nos lo compartís):</strong> análisis estático para detectar malas prácticas y secretos filtrados (contraseñas o claves dentro del código).</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- METODOLOGÍA -->
+<section id="metodologia">
+  <p class="section-label">Proceso</p>
+  <h2 class="section-title">Cómo trabajamos</h2>
+  <p class="section-sub">Un proceso ordenado en 4 etapas, con entregable verificable al final.</p>
+  <div class="timeline">
+    <div class="timeline-step">
+      <div class="step-num">📋</div>
+      <h3>Autorización</h3>
+      <p>Documento escrito y firmado antes de iniciar cualquier actividad. Sin excepciones.</p>
+    </div>
+    <div class="timeline-step">
+      <div class="step-num">🔍</div>
+      <h3>Revisión</h3>
+      <p>Reconocimiento y análisis de configuración, tecnologías y problemas conocidos, sin afectar tu sitio.</p>
+    </div>
+    <div class="timeline-step">
+      <div class="step-num">📄</div>
+      <h3>Informe</h3>
+      <p>Entregable claro con hallazgos priorizados y firma/hash de integridad verificable.</p>
+    </div>
+    <div class="timeline-step">
+      <div class="step-num">✅</div>
+      <h3>Corrección y re-test</h3>
+      <p>Te acompañamos a corregir y volvemos a revisar para confirmar que quedó resuelto.</p>
     </div>
   </div>
 </section>
@@ -450,18 +387,18 @@
 <div id="demo">
   <div>
     <p class="section-label">Demo interactiva</p>
-    <h2 class="section-title">Así trabaja el toolkit</h2>
-    <p class="section-sub">Simulación de un escaneo real. Los datos mostrados son ficticios.</p>
+    <h2 class="section-title">Así se ve una revisión</h2>
+    <p class="section-sub">Simulación ilustrativa de una revisión. Los datos mostrados son ficticios.</p>
 
     <div class="demo-panel" id="demoPanel">
       <div class="demo-header">
-        <span class="demo-title">⚡ Escaneo en progreso — demo-target.com</span>
+        <span class="demo-title">🔍 Revisión en progreso — demo-target.com</span>
         <span class="badge-live" id="badgeLive">EN VIVO</span>
       </div>
       <div class="progress-wrap">
         <div class="progress-bar" id="progressBar"></div>
       </div>
-      <p class="demo-module">Módulo activo: <span id="moduleLabel">iniciando...</span></p>
+      <p class="demo-module">Etapa activa: <span id="moduleLabel">iniciando...</span></p>
       <div class="counters">
         <div class="counter-box high">
           <span class="counter-num" id="cntHigh">0</span>
@@ -478,311 +415,165 @@
       </div>
       <div class="findings-list" id="findingsList" aria-live="polite"></div>
       <p class="demo-footer" id="demoFooter">
-        ✓ Reporte generado: reporte_demo_2026.pdf · Firmado RSA-SHA256: a3f8c1d…
+        ✓ Informe generado — con firma/hash de integridad verificable
       </p>
       <button class="btn-restart" id="btnRestart" type="button">↺ Reiniciar demo</button>
-      <p class="demo-disclaimer">* Datos ficticios únicamente con fines ilustrativos</p>
+      <p class="demo-disclaimer">*Datos ficticios con fines ilustrativos.</p>
     </div>
   </div>
 </div>
 
 <hr class="divider">
 
-<!-- VIDEO DEMO REAL -->
-<section id="video-demo">
-  <p class="section-label">Demo Real</p>
-  <h2 class="section-title">El escáner en acción</h2>
-  <p class="section-sub">Grabación real de una auditoría con Nmap — reconocimiento, detección de servicios y clasificación de hallazgos.</p>
-  <div class="video-wrapper reveal">
-    <video controls preload="metadata" poster="">
-      <source src="demo.mp4" type="video/mp4">
-      Tu navegador no soporta video HTML5.
-    </video>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- TECH STACK -->
-<section id="stack">
-  <p class="section-label">Tech Stack</p>
-  <h2 class="section-title">Construido con herramientas de seguridad reales</h2>
-  <div class="stack-row">
-    <span class="stack-badge" style="background:rgba(55,118,171,0.12);border-color:rgba(55,118,171,0.4);color:#79c0ff;">🐍 Python</span>
-    <span class="stack-badge" style="background:rgba(23,147,209,0.12);border-color:rgba(23,147,209,0.4);color:#1793d1;">🐉 Kali Linux</span>
-    <span class="stack-badge" style="background:rgba(136,23,23,0.12);border-color:rgba(255,107,107,0.4);color:#ff6b6b;">🔒 WireGuard</span>
-    <span class="stack-badge" style="background:rgba(36,150,237,0.12);border-color:rgba(36,150,237,0.4);color:#2496ed;">🐳 Docker</span>
-    <span class="stack-badge" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.2);color:#ccd6f6;">🦙 Ollama</span>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- PORTFOLIO -->
-<div id="portfolio">
-  <div>
-    <p class="section-label">Portfolio</p>
-    <h2 class="section-title">Ejemplos de lo que construimos</h2>
-    <p class="section-sub" style="max-width:520px;margin:0 auto 0;">Cada proyecto con identidad propia, seguridad desde el código y entrega en menos de una semana.</p>
-    <div class="portfolio-grid">
-      <div class="browser-frame reveal">
-        <div class="browser-chrome">
-          <div class="b-dots"><span class="b-red"></span><span class="b-yellow"></span><span class="b-green"></span></div>
-          <span class="b-url">restaurante-ejemplo.com</span>
-        </div>
-        <div class="browser-content mock-restaurant">
-          <div class="browser-scanline"></div>
-          <div class="browser-label">Gastronomía &amp; Restaurantes<br><span class="browser-sublabel">Landing + reservas online + menú digital</span></div>
-        </div>
-      </div>
-      <div class="browser-frame reveal reveal-d1">
-        <div class="browser-chrome">
-          <div class="b-dots"><span class="b-red"></span><span class="b-yellow"></span><span class="b-green"></span></div>
-          <span class="b-url">estudio-profesional.com</span>
-        </div>
-        <div class="browser-content mock-pro">
-          <div class="browser-scanline"></div>
-          <div class="browser-label">Servicios Profesionales<br><span class="browser-sublabel">Estudios jurídicos, contadores, consultoras</span></div>
-        </div>
-      </div>
-      <div class="browser-frame reveal reveal-d2">
-        <div class="browser-chrome">
-          <div class="b-dots"><span class="b-red"></span><span class="b-yellow"></span><span class="b-green"></span></div>
-          <span class="b-url">tienda-online.com</span>
-        </div>
-        <div class="browser-content mock-shop">
-          <div class="browser-scanline"></div>
-          <div class="browser-label">Tiendas Online &amp; E-commerce<br><span class="browser-sublabel">Carrito, pagos y catálogo de productos</span></div>
-        </div>
-      </div>
-      <div class="browser-frame reveal reveal-d3">
-        <div class="browser-chrome">
-          <div class="b-dots"><span class="b-red"></span><span class="b-yellow"></span><span class="b-green"></span></div>
-          <span class="b-url">cliente.com — reporte-auditoria.pdf</span>
-        </div>
-        <div class="browser-content mock-audit">
-          <div class="browser-scanline"></div>
-          <div class="browser-label">Reporte de Auditoría Web<br><span class="browser-sublabel">Entregable firmado RSA-SHA256 · Hallazgos clasificados</span></div>
-        </div>
-      </div>
+<!-- QUÉ RECIBÍS -->
+<section id="que-recibis">
+  <p class="section-label">Entregables</p>
+  <h2 class="section-title">Qué te llevás</h2>
+  <p class="section-sub">Un entregable claro que sirve tanto para vos como para quien mantiene tu sitio.</p>
+  <div class="recibis-list">
+    <div class="recibis-item">
+      <h3>Informe ejecutivo</h3>
+      <p>Resumen claro, sin jerga, con semáforo de riesgo y los puntos más importantes explicados en términos de negocio.</p>
     </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<!-- DISEÑO WEB -->
-<section id="diseno-web">
-  <p class="section-label">Diseño Web</p>
-  <h2 class="section-title">Tu negocio en línea en menos de una semana</h2>
-  <p class="section-sub">Sitios profesionales con seguridad incluida desde el primer día. Sin vulnerabilidades conocidas, sin configuraciones por defecto.</p>
-  <div class="features-grid" style="margin-bottom:3rem;">
-    <div class="feature-card">
-      <div class="feature-icon">⚡</div>
-      <h3>Lista en 7 días</h3>
-      <p>Entregamos el sitio funcionando en menos de una semana, con dominio, hosting y todo configurado.</p>
+    <div class="recibis-item">
+      <h3>Informe técnico (para tu desarrollador)</h3>
+      <p>Cada hallazgo con su nivel de riesgo, la evidencia y cómo corregirlo, paso a paso, ordenado por prioridad.</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">🔒</div>
-      <h3>Seguridad desde el código</h3>
-      <p>Headers HTTP, CSP, HTTPS forzado y firewall configurados antes del primer visitante.</p>
+    <div class="recibis-item">
+      <h3>Informe con firma/hash de integridad verificable</h3>
+      <p>El informe incluye mecanismos de verificación para confirmar que no fue alterado después de la entrega.</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">🛠️</div>
-      <h3>Mantenimiento mensual</h3>
-      <p>Actualizaciones, backups y monitoreo 24/7 incluidos en los planes de mantenimiento.</p>
+    <div class="recibis-item">
+      <h3>Lista de correcciones priorizadas</h3>
+      <p>Qué hacer primero y qué puede esperar, según impacto y esfuerzo.</p>
     </div>
-  </div>
-  <div class="pricing-grid">
-    <div class="price-card">
-      <p class="price-plan">Landing</p>
-      <p class="price-amount">desde $200 USD</p>
-      <p class="price-note">Ideal para emprendedores y profesionales</p>
-      <ul class="price-features">
-        <li>Sitio de 1 página (landing profesional)</li>
-        <li>Diseño responsive mobile-first</li>
-        <li>Formulario de contacto</li>
-        <li>HTTPS + headers de seguridad configurados</li>
-        <li>Entrega en 5-7 días</li>
-      </ul>
-      <a href="#contacto" class="btn-price">Solicitar presupuesto</a>
-    </div>
-    <div class="price-card featured">
-      <span class="featured-badge">MÁS SOLICITADO</span>
-      <p class="price-plan">Web Profesional</p>
-      <p class="price-amount">desde $450 USD</p>
-      <p class="price-note">Para comercios y profesionales con identidad propia</p>
-      <ul class="price-features">
-        <li>Hasta 5 secciones o páginas</li>
-        <li>Diseño personalizado con identidad de marca</li>
-        <li>SEO técnico básico (meta tags, sitemap, robots.txt)</li>
-        <li>Seguridad: WAF, CSP, HSTS, backups automáticos</li>
-        <li>Panel de administración (si aplica)</li>
-        <li>Soporte 30 días post-entrega</li>
-      </ul>
-      <a href="#contacto" class="btn-price">Solicitar presupuesto</a>
-    </div>
-    <div class="price-card">
-      <p class="price-plan">Tienda Online</p>
-      <p class="price-amount">desde $800 USD</p>
-      <p class="price-note">E-commerce completo listo para vender</p>
-      <ul class="price-features">
-        <li>E-commerce con carrito y pagos</li>
-        <li>Hasta 50 productos en catálogo inicial</li>
-        <li>Integración con pasarela de pagos</li>
-        <li>Auditoría de seguridad incluida al lanzar</li>
-        <li>Certificado SSL + protección antifraude básica</li>
-      </ul>
-      <a href="#contacto" class="btn-price">Hablar de tu proyecto</a>
+    <div class="recibis-item">
+      <h3>Re-test posterior</h3>
+      <p>Incluido en Auditoría + Hardening y en Seguimiento: volvemos a revisar después de que corrijas, para confirmar que quedó resuelto.</p>
     </div>
   </div>
 </section>
 
 <hr class="divider">
 
-<!-- MANTENIMIENTO -->
-<section id="mantenimiento">
-  <p class="section-label">Mantenimiento</p>
-  <h2 class="section-title">Tu sitio activo y seguro todos los meses</h2>
-  <p class="section-sub">Planes mensuales para que no tengas que preocuparte por nada técnico.</p>
-  <div class="pricing-grid" style="max-width:720px;margin:0 auto;">
-    <div class="price-card">
-      <p class="price-plan">Esencial</p>
-      <p class="price-amount">$40–60 USD/mes</p>
-      <p class="price-note">Para sitios que necesitan estabilidad</p>
-      <ul class="price-features">
-        <li>Monitoreo de uptime 24/7</li>
-        <li>Backups semanales automáticos</li>
-        <li>Actualizaciones de CMS y plugins</li>
-        <li>Reporte mensual de estado</li>
-      </ul>
-      <a href="#contacto" class="btn-price">Contratar</a>
-    </div>
-    <div class="price-card featured">
-      <span class="featured-badge">RECOMENDADO</span>
-      <p class="price-plan">Seguridad+</p>
-      <p class="price-amount">$80–120 USD/mes</p>
-      <p class="price-note">Para sitios que manejan datos de clientes</p>
-      <ul class="price-features">
-        <li>Todo lo del plan Esencial</li>
-        <li>Escaneo mensual de malware y vulnerabilidades</li>
-        <li>Análisis de headers y configuración de seguridad</li>
-        <li>Respuesta ante incidentes (hasta 2hs)</li>
-        <li>Reporte técnico mensual firmado</li>
-      </ul>
-      <a href="#contacto" class="btn-price">Contratar</a>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- SERVICIOS -->
-<section id="servicios">
-  <p class="section-label">Servicios</p>
-  <h2 class="section-title">¿Qué tipo de auditoría necesitás?</h2>
-  <p class="section-sub">Cada servicio genera un reporte ejecutivo firmado digitalmente como entregable final.</p>
-  <div class="services-grid">
-    <div class="service-card">
-      <h3>Auditoría Black Box</h3>
-      <p>Reconocimiento pasivo + escaneo externo sin credenciales. Perspectiva del atacante real.</p>
-    </div>
-    <div class="service-card">
-      <h3>Auditoría Gray Box</h3>
-      <p>Con credenciales de acceso parcial. Mayor cobertura y profundidad de análisis.</p>
-    </div>
-    <div class="service-card">
-      <h3>Análisis de Código (SAST)</h3>
-      <p>Semgrep y Trufflehog sobre código fuente. Detección de secretos y vulnerabilidades estáticas.</p>
-    </div>
-    <div class="service-card">
-      <h3>Reporte Ejecutivo</h3>
-      <p>PDF firmado con RSA-SHA256. Hallazgos clasificados por severidad con recomendaciones de remediación.</p>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- METODOLOGÍA -->
-<section id="metodologia">
-  <p class="section-label">Proceso</p>
-  <h2 class="section-title">Cómo trabajamos</h2>
-  <p class="section-sub">Metodología en 4 etapas con entregable firmado al final.</p>
-  <div class="timeline">
-    <div class="timeline-step">
-      <div class="step-num">📋</div>
-      <h3>Autorización</h3>
-      <p>Documento firmado antes de iniciar cualquier actividad. Sin excepciones.</p>
-    </div>
-    <div class="timeline-step">
-      <div class="step-num">🔍</div>
-      <h3>Reconocimiento</h3>
-      <p>OSINT y recon pasivo. DNS, WHOIS, historial, tecnologías expuestas.</p>
-    </div>
-    <div class="timeline-step">
-      <div class="step-num">⚡</div>
-      <h3>Análisis</h3>
-      <p>Escaneo activo con Nikto/Nuclei y análisis estático de código fuente.</p>
-    </div>
-    <div class="timeline-step">
-      <div class="step-num">📄</div>
-      <h3>Entregable</h3>
-      <p>Reporte PDF firmado digitalmente con hallazgos y recomendaciones.</p>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- PRECIOS -->
-<section id="precios">
+<!-- PLANES -->
+<section id="planes">
   <p class="section-label">Planes</p>
-  <h2 class="section-title">Precios claros y sin letra chica</h2>
-  <p class="section-sub">Escribime para recibir un presupuesto personalizado según tu aplicación y alcance.</p>
+  <h2 class="section-title">Planes claros, sin letra chica</h2>
+  <p class="section-sub">Escribinos y te armamos un presupuesto según tu sitio. Estos son los puntos de partida.</p>
   <div class="pricing-grid">
     <div class="price-card">
-      <p class="price-plan">Black Box</p>
-      <p class="price-amount">desde $400 USD</p>
-      <p class="price-note">Ideal para sitios pequeños y startups</p>
+      <p class="price-plan">Chequeo Express</p>
+      <p class="price-amount">Desde USD 90</p>
+      <p class="price-note">o equivalente en ARS · Para saber rápido en qué estás parado</p>
       <ul class="price-features">
-        <li>Reconocimiento pasivo completo (OSINT)</li>
-        <li>Escaneo Nikto + Nuclei</li>
-        <li>Detección de WAF y stack tecnológico</li>
-        <li>Reporte ejecutivo firmado RSA-SHA256</li>
-        <li>Documento de autorización formal</li>
+        <li>Revisión externa sin credenciales (recon pasivo)</li>
+        <li>Certificado SSL + headers de seguridad</li>
+        <li>Tecnologías y versiones expuestas</li>
+        <li>Chequeo de WordPress (si aplica)</li>
+        <li>Mini-informe con los 5 puntos más importantes</li>
+        <li>Entrega en 2–3 días hábiles</li>
       </ul>
-      <a href="#contacto" class="btn-price">Solicitar presupuesto</a>
+      <a href="#contacto" class="btn-price">Pedir Chequeo Express</a>
     </div>
     <div class="price-card featured">
-      <span class="featured-badge">MÁS SOLICITADO</span>
-      <p class="price-plan">Profesional</p>
-      <p class="price-amount">desde $900 USD</p>
-      <p class="price-note">Para empresas con mayor superficie de ataque</p>
+      <span class="featured-badge">MÁS ELEGIDO</span>
+      <p class="price-plan">Auditoría Web + Hardening</p>
+      <p class="price-amount">Desde USD 300</p>
+      <p class="price-note">o equivalente en ARS · La revisión completa, y te ayudamos a corregir</p>
       <ul class="price-features">
-        <li>Todo lo del plan Black Box</li>
-        <li>Gray Box — análisis autenticado</li>
-        <li>SAST: Semgrep + Trufflehog sobre código</li>
-        <li>Análisis IA local — sin enviar datos a la nube</li>
-        <li>Reporte técnico con CVSS + recomendaciones</li>
-        <li>Seguimiento post-auditoría (30 días)</li>
+        <li>Todo lo del Chequeo Express</li>
+        <li>Puertos, subdominios, directorios, WAF, CORS y cookies</li>
+        <li>Vulnerabilidades conocidas (CVE) y misconfiguraciones</li>
+        <li>Reputación de dominio e IP</li>
+        <li>Informe ejecutivo + técnico con correcciones priorizadas</li>
+        <li>Acompañamiento de correcciones (headers, SSL, actualizaciones)</li>
+        <li>Re-test posterior para confirmar que quedó resuelto</li>
+        <li>Entrega en 5–7 días hábiles</li>
       </ul>
       <a href="#contacto" class="btn-price">Solicitar presupuesto</a>
     </div>
     <div class="price-card">
-      <p class="price-plan">Enterprise</p>
-      <p class="price-amount">desde $2.000 USD</p>
-      <p class="price-note">Alcance completo para aplicaciones críticas</p>
+      <p class="price-plan">Seguimiento Mensual</p>
+      <p class="price-amount">Desde USD 60/mes</p>
+      <p class="price-note">o equivalente en ARS · Para no quedarte sin revisar nunca más</p>
       <ul class="price-features">
-        <li>Todo lo del plan Profesional</li>
-        <li>Auditoría completa de infraestructura</li>
-        <li>Re-test post correcciones incluido</li>
-        <li>Consultoría de remediación</li>
-        <li>NDA + SLA documentado</li>
-        <li>Reporte ejecutivo para directivos</li>
+        <li>Revisión mensual de seguridad y configuración</li>
+        <li>Monitoreo de disponibilidad de tu sitio, con reporte</li>
+        <li>Aviso cuando aparezca algo nuevo que requiera atención</li>
+        <li>Actualización de CMS y plugins coordinada</li>
+        <li>Informe mensual con firma/hash de integridad verificable</li>
+        <li>Soporte con respuesta en horario laboral (hasta 48 h hábiles)</li>
       </ul>
-      <a href="#contacto" class="btn-price">Hablar de tu proyecto</a>
+      <a href="#contacto" class="btn-price">Contratar seguimiento</a>
     </div>
+  </div>
+  <p class="plans-note">Los valores pueden adaptarse según el tamaño del sitio, urgencia y alcance de la revisión.</p>
+</section>
+
+<hr class="divider">
+
+<!-- QUÉ NO INCLUYE -->
+<section id="que-no-incluye">
+  <p class="section-label">Transparencia</p>
+  <h2 class="section-title">Para que quede claro: qué NO hacemos</h2>
+  <p class="section-sub">Preferimos ser transparentes desde el principio.</p>
+  <ul class="exclude-box">
+    <li><strong>No explotamos las vulnerabilidades.</strong> Detectamos y reportamos; no atacamos ni intentamos "entrar" a tu sitio.</li>
+    <li><strong>No hacemos pruebas de saturación</strong> (nada de tumbar tu sitio ni ataques de denegación de servicio).</li>
+    <li><strong>No accedemos a información privada</strong> salvo que lo autorices expresamente.</li>
+    <li><strong>No modificamos tu sitio</strong> sin tu autorización explícita.</li>
+    <li><strong>No damos garantías absolutas.</strong> Ninguna revisión seria puede prometer "seguridad total": te damos una foto clara del estado actual y las correcciones para mejorarlo mucho.</li>
+    <li><strong>No trabajamos sin autorización escrita.</strong> Sin ese documento firmado, no empezamos.</li>
+  </ul>
+</section>
+
+<hr class="divider">
+
+<!-- AUTORIZACIÓN Y CONFIDENCIALIDAD -->
+<section id="autorizacion">
+  <p class="section-label">Legal</p>
+  <h2 class="section-title">Trabajamos con tu permiso, siempre</h2>
+  <p class="section-sub">Tu tranquilidad y la legalidad van primero.</p>
+  <div class="legal-box">
+    <p>Antes de revisar nada, firmás un <strong>documento de autorización</strong> donde definimos exactamente qué sitio se revisa, qué actividades incluye y qué queda afuera. Solo trabajamos sobre sitios de los que seas titular o representante autorizado.</p>
+    <p>Toda la información de la revisión es <strong>confidencial</strong> y de uso exclusivo tuyo. Si lo necesitás, firmamos un acuerdo de confidencialidad (NDA).</p>
+    <p>Operamos dentro del marco legal vigente, incluyendo la Ley 25.326 (Protección de Datos Personales) y la Ley 26.388 (Delitos Informáticos) de Argentina.</p>
+    <p class="legal-seal">Todas las revisiones se realizan bajo autorización escrita previa.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FAQ -->
+<section id="faq">
+  <p class="section-label">Preguntas frecuentes</p>
+  <h2 class="section-title">Lo que solés preguntarnos</h2>
+  <div class="faq-wrap">
+    <details class="faq-item">
+      <summary>¿Es legal?</summary>
+      <p>Sí. Trabajamos únicamente sobre sitios de los que seas titular o tengas autorización, y siempre con un documento escrito que define el alcance de la revisión. No realizamos pruebas fuera de ese alcance.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Pueden romper mi sitio?</summary>
+      <p>No hacemos pruebas de saturación ni explotación intrusiva por defecto. La revisión está pensada para detectar riesgos visibles, configuraciones débiles y problemas conocidos sin afectar el funcionamiento del sitio. Cualquier prueba adicional requiere autorización específica.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Necesitan autorización?</summary>
+      <p>Sí, es obligatoria y sin excepciones. Antes de revisar nada firmás una autorización escrita. Si no está firmada, no empezamos.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Qué recibo?</summary>
+      <p>Un informe ejecutivo simple (para vos) y uno técnico (para tu desarrollador), con cada hallazgo, su nivel de riesgo y cómo corregirlo, priorizado. Todo con firma/hash de integridad verificable. En los planes superiores, además, te acompañamos a corregir y volvemos a revisar.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Cuánto tarda?</summary>
+      <p>El Chequeo Express, 2–3 días hábiles. La Auditoría + Hardening, 5–7 días hábiles, según el tamaño de tu sitio. Te confirmamos el plazo exacto al arrancar.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Sirve para WordPress?</summary>
+      <p>Sí, es uno de los casos que mejor cubrimos. Revisamos plugins, temas, versiones y configuración con herramientas específicas para WordPress, que es donde suelen estar la mayoría de los problemas en sitios de comercios.</p>
+    </details>
   </div>
 </section>
 
@@ -795,13 +586,13 @@
       <div class="about-avatar">🛡️</div>
     </div>
     <div class="about-text">
-      <h2>Danilo — <span style="color:var(--accent)">DaniAngel79</span></h2>
-      <p class="about-role">Especialista en Seguridad Ofensiva · Auditoría Web · OSINT</p>
+      <h2>Danilo · <span style="color:var(--accent)">SocRecon</span></h2>
+      <p class="about-role">Especialista en seguridad web · Reviso y ayudo a proteger sitios de comercios y profesionales</p>
       <p>
-        Desarrollo y opero un ecosistema de herramientas de auditoría web construido sobre Kali Linux, con VPN WireGuard dedicada y modelos de IA corriendo 100% en local para garantizar la confidencialidad de cada cliente.
+        Uso herramientas profesionales de revisión web y modelos de IA locales como apoyo para analizar hallazgos y redactar informes, sin enviar información sensible del cliente a servicios externos de IA.
       </p>
       <p>
-        Cada auditoría incluye un documento de autorización firmado antes de iniciar, y un reporte PDF con firma digital RSA-SHA256 como entregable final. Sin atajos, sin letra chica.
+        Cada trabajo arranca con un documento de autorización firmado, y termina con un informe con firma/hash de integridad verificable. Sin atajos, sin letra chica.
       </p>
       <div class="about-tags">
         <span class="tag">Python</span>
@@ -809,7 +600,7 @@
         <span class="tag">OWASP</span>
         <span class="tag">Nuclei</span>
         <span class="tag">Semgrep</span>
-        <span class="tag">WireGuard</span>
+        <span class="tag">WordPress</span>
         <span class="tag">OSINT</span>
         <span class="tag">Ollama</span>
       </div>
@@ -817,27 +608,34 @@
   </div>
 </section>
 
-<!-- CONTACTO -->
+<!-- CONTACTO / CTA FINAL -->
 <div id="contacto">
   <div>
     <p class="section-label">Contacto</p>
-    <h2 class="section-title">¿Hablamos?</h2>
+    <h2 class="section-title">¿Hablamos 15 minutos?</h2>
     <div class="contact-box">
       <p class="contact-sub">
-        Escribime directamente para coordinar una consulta inicial gratuita de 15 minutos. Sin compromiso.
+        Te contamos sin compromiso qué revisaríamos en tu sitio y qué plan puede adaptarse mejor. Sin humo técnico.
       </p>
-      <a href="mailto:infra.socrecon@proton.me" class="contact-email">
-        ✉️ infra.socrecon@proton.me
-      </a>
-      <br><br>
-      <a href="mailto:infra.socrecon@proton.me?subject=Solicitud%20de%20Servicio%20Web" class="btn-primary" style="display:inline-flex;margin:0 auto;">
-        Escribime →
-      </a>
-      <p style="margin-top:2rem;font-size:0.82rem;color:var(--muted);letter-spacing:0.5px;">
-        💳 Métodos de pago aceptados:
-        <strong style="color:var(--text);">Payoneer</strong> ·
-        <strong style="color:var(--text);">Transferencia bancaria (Argentina)</strong> ·
-        <strong style="color:var(--text);">USDT TRC-20</strong>
+      <div class="contact-btns">
+        <a href="https://wa.me/5493547322127" class="btn-wa" target="_blank" rel="noopener noreferrer">
+          💬 Escribinos por WhatsApp
+        </a>
+        <a href="mailto:infra.socrecon@proton.me?subject=Quiero%20revisar%20la%20seguridad%20de%20mi%20sitio" class="btn-mail">
+          ✉️ Escribir por email
+        </a>
+        <!-- Botón de agenda: preparado. Descomentar y reemplazar el href cuando haya link real de Cal.com/Calendly.
+        <a href="https://cal.com/usuario/15min" class="btn-mail" target="_blank" rel="noopener noreferrer">
+          📅 Agendar una reunión breve
+        </a>
+        -->
+      </div>
+      <p class="pay-methods">
+        💳 Métodos de pago:
+        <strong>Payoneer</strong> · <strong>Transferencia bancaria (Argentina)</strong> · <strong>USDT TRC-20</strong>
+      </p>
+      <p class="contact-micro">
+        Consulta inicial gratuita · Autorización escrita antes de empezar · Confidencialidad acordada por escrito
       </p>
     </div>
   </div>
@@ -845,8 +643,8 @@
 
 <!-- FOOTER -->
 <footer>
-  <span>© 2026 AuditWeb · <a href="https://github.com/DaniAngel79/auditweb-demo" target="_blank" rel="noopener noreferrer">DaniAngel79</a></span>
-  <span>Todos los escaneos se realizan bajo autorización escrita previa.</span>
+  <span>© 2026 <span class="foot-brand">AuditWeb</span> · SocRecon</span>
+  <span>Todas las revisiones se realizan bajo autorización escrita previa.</span>
 </footer>
 
 <script>
@@ -866,20 +664,19 @@
     a.addEventListener('click', function() { navLinks.classList.remove('open'); });
   });
 
-  // DEMO ANIMADA — datos ficticios
+  // DEMO ANIMADA — datos ficticios coherentes con la herramienta
   const FINDINGS = [
-    '🔴 [HIGH] SQLi detectado — /search?q=',
-    '🟡 [MED] CSP ausente — /login',
-    '🟡 [MED] HSTS no configurado',
-    '🟢 [LOW] Server header expuesto — Apache/2.4.7',
-    '🟡 [MED] X-Frame-Options ausente',
-    '🔴 [HIGH] Open redirect — /redirect?url=',
-    '🟢 [LOW] jQuery desactualizado (1.11.1)',
-    '🟢 [LOW] Directory listing — /assets/'
+    '🟡 [MEDIO] HSTS ausente',
+    '🟡 [MEDIO] Certificado SSL por vencer (12 días)',
+    '🟠 [ALTO] WordPress / plugin desactualizado',
+    '🟢 [BAJO] Server header expone versión (Apache/2.4.7)',
+    '🟠 [ALTO] Directorio /backups accesible',
+    '🟡 [MEDIO] Headers de seguridad faltantes',
+    '🟢 [BAJO] Tecnología expuesta públicamente'
   ];
 
-  const MODULES = ['recon pasivo', 'nikto', 'nuclei', 'whitebox', 'report'];
-  const TARGET_HIGH = 2, TARGET_MED = 5, TARGET_LOW = 8;
+  const MODULES = ['recon pasivo', 'headers / SSL', 'nuclei', 'wordpress', 'informe'];
+  const TARGET_HIGH = 2, TARGET_MED = 3, TARGET_LOW = 2;
 
   const progressBar  = document.getElementById('progressBar');
   const moduleLabel  = document.getElementById('moduleLabel');
@@ -907,7 +704,6 @@
     cntHigh.textContent = '0';
     cntMed.textContent  = '0';
     cntLow.textContent  = '0';
-    // Vaciar lista de hallazgos de forma segura
     while (findingsList.firstChild) {
       findingsList.removeChild(findingsList.firstChild);
     }
@@ -932,37 +728,31 @@
     running = true;
     resetDemo();
 
-    // Barra de progreso
     void progressBar.offsetWidth;
     progressBar.style.transition = 'width 5s linear';
     progressBar.style.width = '100%';
 
-    // Módulos rotativos
     MODULES.forEach(function(mod, i) {
       var t = setTimeout(function() { moduleLabel.textContent = mod; }, i * 1000);
       timers.push(t);
     });
 
-    // Contadores
     timers.push(setTimeout(function() { animateCounter(cntHigh, TARGET_HIGH, 2000); }, 1500));
     timers.push(setTimeout(function() { animateCounter(cntMed,  TARGET_MED,  2500); }, 2000));
     timers.push(setTimeout(function() { animateCounter(cntLow,  TARGET_LOW,  3000); }, 2500));
 
-    // Hallazgos apareciendo uno a uno
     FINDINGS.forEach(function(text, i) {
       var t = setTimeout(function() {
         var div = document.createElement('div');
         div.className = 'finding-item';
         div.textContent = text;
         findingsList.appendChild(div);
-        // Forzar reflow para activar la transición CSS
         void div.offsetWidth;
         div.classList.add('visible');
       }, 1800 + i * 420);
       timers.push(t);
     });
 
-    // Footer final
     var tFinal = setTimeout(function() {
       demoFooter.classList.add('visible');
       badgeLive.textContent = 'COMPLETO';
@@ -971,7 +761,6 @@
     timers.push(tFinal);
   }
 
-  // Activar con IntersectionObserver al entrar en viewport
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting && !running) {
@@ -987,7 +776,7 @@
     setTimeout(runDemo, 300);
   });
 
-  // ── PARTÍCULAS HERO ──────────────────────────────────────────────
+  // ── PARTÍCULAS HERO ──
   (function() {
     var canvas = document.getElementById('hero-canvas');
     if (!canvas) return;
@@ -1027,7 +816,6 @@
         if (p.y < 0) p.y = H;
         if (p.y > H) p.y = 0;
       });
-      // líneas de conexión
       for (var i = 0; i < particles.length; i++) {
         for (var j = i + 1; j < particles.length; j++) {
           var dx = particles[i].x - particles[j].x;
@@ -1048,7 +836,7 @@
     draw();
   })();
 
-  // ── SCROLL REVEAL ─────────────────────────────────────────────────
+  // ── SCROLL REVEAL ──
   (function() {
     var revealObs = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
@@ -1059,11 +847,10 @@
       });
     }, { threshold: 0.12 });
 
-    // Auto-marcar secciones principales
     var targets = document.querySelectorAll(
-      '.feature-card, .price-card, .service-card, .timeline-step, ' +
-      '.stat-item, .browser-frame, .section-title, .section-sub, ' +
-      '.section-label, .about-wrap, .contact-box'
+      '.feature-card, .price-card, .timeline-step, .recibis-item, ' +
+      '.trust-chip, .faq-item, .section-title, .section-sub, ' +
+      '.section-label, .about-wrap, .contact-box, .exclude-box, .legal-box'
     );
     targets.forEach(function(el) {
       if (!el.classList.contains('reveal')) {
@@ -1072,33 +859,8 @@
       revealObs.observe(el);
     });
 
-    // Los que ya tienen .reveal
     document.querySelectorAll('.reveal').forEach(function(el) {
       revealObs.observe(el);
-    });
-  })();
-
-  // ── STATS COUNTER ─────────────────────────────────────────────────
-  (function() {
-    var statsObs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (!e.isIntersecting) return;
-        statsObs.unobserve(e.target);
-        var el = e.target;
-        var target = parseInt(el.getAttribute('data-target'), 10);
-        if (target === 0) { el.textContent = '0'; return; }
-        var current = 0;
-        var step = Math.max(1, Math.ceil(target / 40));
-        var id = setInterval(function() {
-          current = Math.min(current + step, target);
-          el.textContent = current + (target === 100 ? '' : '');
-          if (current >= target) clearInterval(id);
-        }, 40);
-      });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('.stat-num[data-target]').forEach(function(el) {
-      statsObs.observe(el);
     });
   })();
 </script>
